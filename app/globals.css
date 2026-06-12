@@ -1,0 +1,22 @@
+@import "../css/style.css";
+@import "../css/project.css";
+
+/* Next.js Image wrappers */
+.work-image img,
+.project-hero-image img,
+.about-profile-image img,
+.contact-location-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.project-hero-image img {
+  aspect-ratio: 21 / 9;
+  object-fit: cover;
+}
+
+.work-image img {
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
