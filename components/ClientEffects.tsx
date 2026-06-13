@@ -68,6 +68,28 @@ export default function ClientEffects() {
       );
     }
 
+    /* ── Floating sticker parallax ── */
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+    const stickerEls = document.querySelectorAll<HTMLElement>(".floating-sticker");
+
+    const onStickerParallax = () => {
+      const scrollY = window.scrollY;
+      stickerEls.forEach((el, i) => {
+        const speed = 0.03 + (i % 5) * 0.012;
+        el.style.setProperty("--parallax-y", `${scrollY * speed}px`);
+      });
+    };
+
+    if (stickerEls.length && !prefersReducedMotion) {
+      window.addEventListener("scroll", onStickerParallax, { passive: true });
+      onStickerParallax();
+      cleanups.push(() =>
+        window.removeEventListener("scroll", onStickerParallax)
+      );
+    }
+
     /* ── Scroll reveal ── */
     const revealElements = document.querySelectorAll(".reveal");
     const revealObserver = new IntersectionObserver(

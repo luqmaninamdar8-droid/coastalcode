@@ -149,20 +149,76 @@ main {
 
 .floating-sticker {
   position: absolute;
+  transform: translateY(var(--parallax-y, 0px));
+  will-change: transform;
+}
+
+.floating-sticker-inner {
+  position: relative;
+  padding: 8px;
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: 20px;
+  box-shadow:
+    0 5px 0 rgba(12, 74, 110, 0.1),
+    0 14px 32px rgba(12, 74, 110, 0.18),
+    0 0 0 3px rgba(255, 255, 255, 0.95);
+  transform: rotate(var(--rotate, 0deg));
   animation: sticker-float var(--duration, 18s) ease-in-out infinite;
   animation-delay: var(--delay, 0s);
 }
 
-.floating-sticker-inner {
-  padding: 6px;
-  background: rgba(255, 255, 255, 0.85);
-  border-radius: 18px;
+.floating-sticker-inner::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  pointer-events: none;
+}
+
+.floating-sticker-inner--glow {
   box-shadow:
-    0 4px 0 rgba(12, 74, 110, 0.08),
-    0 12px 28px rgba(12, 74, 110, 0.15),
-    0 0 0 3px rgba(255, 255, 255, 0.9);
-  transform: rotate(var(--rotate, 0deg));
-  transition: transform 0.3s ease;
+    0 5px 0 rgba(12, 74, 110, 0.1),
+    0 14px 32px rgba(12, 74, 110, 0.18),
+    0 0 0 3px rgba(255, 255, 255, 0.95),
+    0 0 28px color-mix(in srgb, var(--accent, #38bdf8) 45%, transparent);
+  animation:
+    sticker-float var(--duration, 18s) ease-in-out infinite,
+    sticker-glow 3.5s ease-in-out infinite;
+  animation-delay: var(--delay, 0s), calc(var(--delay, 0s) * 0.5);
+}
+
+.floating-sticker-inner--shine {
+  overflow: hidden;
+}
+
+.floating-sticker-inner--shine::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -120%;
+  width: 60%;
+  height: 200%;
+  background: linear-gradient(
+    105deg,
+    transparent 35%,
+    rgba(255, 255, 255, 0.75) 50%,
+    transparent 65%
+  );
+  animation: sticker-shine 5s ease-in-out infinite;
+  animation-delay: var(--delay, 0s);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.floating-sticker-inner--badge {
+  border-radius: 50%;
+  padding: 10px;
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.98),
+    color-mix(in srgb, var(--accent, #38bdf8) 18%, white)
+  );
 }
 
 .floating-sticker-img {
@@ -170,6 +226,7 @@ main {
   width: auto;
   height: auto;
   max-width: 100%;
+  filter: drop-shadow(0 2px 4px rgba(12, 74, 110, 0.12));
 }
 
 @keyframes sticker-float {
@@ -177,37 +234,58 @@ main {
   100% {
     transform: translate(0, 0) rotate(var(--rotate, 0deg));
   }
-  25% {
-    transform: translate(12px, -22px) rotate(calc(var(--rotate, 0deg) + 6deg));
+  20% {
+    transform: translate(14px, -18px) rotate(calc(var(--rotate, 0deg) + 8deg));
   }
-  50% {
-    transform: translate(-8px, -35px) rotate(calc(var(--rotate, 0deg) - 4deg));
+  45% {
+    transform: translate(-10px, -32px) rotate(calc(var(--rotate, 0deg) - 5deg));
   }
-  75% {
-    transform: translate(18px, -12px) rotate(calc(var(--rotate, 0deg) + 3deg));
+  70% {
+    transform: translate(16px, -14px) rotate(calc(var(--rotate, 0deg) + 4deg));
   }
 }
 
-/* Hide side stickers on tablet — keep a few */
+@keyframes sticker-glow {
+  0%,
+  100% {
+    filter: brightness(1);
+  }
+  50% {
+    filter: brightness(1.08);
+  }
+}
+
+@keyframes sticker-shine {
+  0%,
+  70%,
+  100% {
+    left: -120%;
+  }
+  85% {
+    left: 140%;
+  }
+}
+
+/* Hide side stickers on tablet — keep a lively set */
 @media (max-width: 1100px) {
-  .floating-sticker:nth-child(n + 6) {
+  .floating-sticker:nth-child(n + 11) {
     display: none;
   }
 }
 
 @media (max-width: 768px) {
-  .floating-sticker:nth-child(n + 4) {
+  .floating-sticker:nth-child(n + 7) {
     display: none;
   }
 
   .floating-sticker-inner {
-    padding: 4px;
-    border-radius: 14px;
+    padding: 5px;
+    border-radius: 16px;
   }
 
   .floating-sticker-img {
-    width: 48px !important;
-    height: 48px !important;
+    width: 44px !important;
+    height: 44px !important;
   }
 
   .colorful-bg__blob {
@@ -217,15 +295,30 @@ main {
 }
 
 @media (max-width: 480px) {
-  .floating-stickers {
+  .floating-sticker:nth-child(n + 5) {
     display: none;
+  }
+
+  .floating-sticker-inner {
+    padding: 4px;
+    border-radius: 14px;
+  }
+
+  .floating-sticker-img {
+    width: 38px !important;
+    height: 38px !important;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .colorful-bg__blob,
   .colorful-bg__rainbow,
-  .floating-sticker {
+  .floating-sticker-inner,
+  .floating-sticker-inner--shine::before {
     animation: none;
+  }
+
+  .floating-sticker {
+    transform: none;
   }
 }
