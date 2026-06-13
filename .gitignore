@@ -5,6 +5,5 @@ out/
 .DS_Store
 *.local
 
-# Large video assets — keep local only
-videos/
-public/videos/
+# Large source video folder at repo root — keep local only
+/videos/

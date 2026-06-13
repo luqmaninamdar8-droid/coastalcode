@@ -1,0 +1,268 @@
+/* ── Site-wide gradient enhancements ── */
+
+:root {
+  --gradient-coastal: linear-gradient(
+    135deg,
+    #0ea5e9 0%,
+    #6366f1 30%,
+    #f97316 65%,
+    #fbbf24 100%
+  );
+  --gradient-section-a: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.92) 0%,
+    rgba(224, 242, 254, 0.45) 55%,
+    rgba(255, 251, 235, 0.85) 100%
+  );
+  --gradient-section-b: linear-gradient(
+    180deg,
+    rgba(254, 243, 199, 0.35) 0%,
+    rgba(255, 255, 255, 0.9) 50%,
+    rgba(224, 242, 254, 0.3) 100%
+  );
+  --gradient-glass: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.95) 0%,
+    rgba(224, 242, 254, 0.55) 100%
+  );
+}
+
+@keyframes gradient-flow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes mesh-gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Animated page hero gradient */
+.page-hero-bg {
+  background: linear-gradient(
+    135deg,
+    #fffbeb 0%,
+    #bae6fd 22%,
+    #fef3c7 45%,
+    #ddd6fe 68%,
+    #ffedd5 100%
+  );
+  background-size: 220% 220%;
+  animation: gradient-flow 14s ease infinite;
+}
+
+.page-hero-bg::before,
+.page-hero-bg::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.page-hero-bg::before {
+  width: min(420px, 70vw);
+  height: min(420px, 70vw);
+  top: -120px;
+  right: -80px;
+  background: radial-gradient(circle, rgba(249, 115, 22, 0.28) 0%, transparent 68%);
+}
+
+.page-hero-bg::after {
+  width: min(360px, 60vw);
+  height: min(360px, 60vw);
+  bottom: -100px;
+  left: -60px;
+  background: radial-gradient(circle, rgba(14, 165, 233, 0.32) 0%, transparent 68%);
+}
+
+/* Section tags — gradient pills */
+.section-tag {
+  background: var(--gradient-sunset);
+  color: var(--color-white) !important;
+  padding: 0.42rem 1rem;
+  border-radius: var(--radius-full);
+  box-shadow: 0 4px 18px rgba(249, 115, 22, 0.28);
+  letter-spacing: 0.06em;
+}
+
+/* Section headings — ocean-to-coral gradient text */
+.section-header h2 {
+  background: linear-gradient(120deg, var(--color-ocean) 0%, #0369a1 45%, var(--color-coral) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Header — gradient accent when scrolled */
+.header.scrolled::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: var(--gradient-coastal);
+  opacity: 0.85;
+}
+
+.header.scrolled {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 251, 235, 0.96) 0%,
+    rgba(224, 242, 254, 0.88) 100%
+  );
+}
+
+/* Logo — subtle gradient */
+.logo {
+  background: var(--gradient-ocean);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.header.header--home:not(.scrolled) .logo {
+  background: none;
+  -webkit-background-clip: unset;
+  background-clip: unset;
+  color: var(--color-white);
+  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.25);
+}
+
+/* Alternating section gradient bands */
+main > section.section:nth-of-type(even):not(.page-hero):not(.hero) {
+  background: var(--gradient-section-a);
+}
+
+main > section.section:nth-of-type(odd):not(.page-hero):not(.hero) {
+  background: var(--gradient-section-b);
+}
+
+.work-stats,
+.client-logos {
+  background: linear-gradient(
+    90deg,
+    rgba(12, 74, 110, 0.06) 0%,
+    rgba(14, 165, 233, 0.12) 50%,
+    rgba(249, 115, 22, 0.08) 100%
+  ) !important;
+}
+
+.testimonials,
+.work-categories,
+.faq {
+  background: linear-gradient(
+    180deg,
+    rgba(224, 242, 254, 0.35) 0%,
+    rgba(255, 255, 255, 0.92) 45%,
+    rgba(254, 243, 199, 0.25) 100%
+  ) !important;
+}
+
+/* Cards — gradient top accent on hover */
+.work-card,
+.service-card,
+.preview-card,
+.teaser-card,
+.who-card,
+.testimonial-card,
+.category-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.work-card::before,
+.service-card::before,
+.preview-card::before,
+.teaser-card::before,
+.who-card::before,
+.testimonial-card::before,
+.category-card--video::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--gradient-coastal);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.category-card--video::before {
+  z-index: 3;
+}
+
+.work-card:hover::before,
+.service-card:hover::before,
+.preview-card:hover::before,
+.teaser-card:hover::before,
+.who-card:hover::before,
+.testimonial-card:hover::before,
+.category-card--video:hover::before {
+  transform: scaleX(1);
+}
+
+/* Glass gradient cards */
+.work-card,
+.service-card,
+.preview-card {
+  background: var(--gradient-glass);
+}
+
+/* Secondary button — gradient fill on hover */
+.btn-secondary:hover {
+  background: var(--gradient-ocean);
+  border-color: transparent;
+  color: var(--color-white);
+}
+
+/* Scroll progress — richer gradient */
+#scroll-progress {
+  background: var(--gradient-coastal);
+  background-size: 200% 100%;
+  animation: gradient-flow 4s linear infinite;
+}
+
+/* CTA banner — animated overlay */
+.cta-banner-inner {
+  background: linear-gradient(
+    135deg,
+    #0c4a6e 0%,
+    #0369a1 40%,
+    #0ea5e9 70%,
+    #0284c7 100%
+  );
+  background-size: 200% 200%;
+  animation: gradient-flow 10s ease infinite;
+}
+
+@media (max-width: 768px) {
+  main > section.section:nth-of-type(even):not(.page-hero):not(.hero),
+  main > section.section:nth-of-type(odd):not(.page-hero):not(.hero) {
+    background: var(--gradient-section-a);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-hero-bg,
+  #scroll-progress,
+  .cta-banner-inner {
+    animation: none;
+  }
+}

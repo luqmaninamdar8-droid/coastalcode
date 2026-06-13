@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
+import CategoryVideoCard from "@/components/CategoryVideoCard";
 import ClientLogos from "@/components/ClientLogos";
 import CtaBanner from "@/components/CtaBanner";
 import PageHero from "@/components/PageHero";
 import WorkCard from "@/components/WorkCard";
+import { workCategories } from "@/lib/categories";
 import { projects } from "@/lib/projects";
 
 export const metadata: Metadata = {
@@ -67,56 +69,8 @@ export default function WorkPage() {
             <p>I&apos;ve worked across different industries — here&apos;s what I have experience with.</p>
           </div>
           <div className="categories-grid">
-            {[
-              {
-                count: "3 projects",
-                title: "Hospitality",
-                text: "Resorts, homestays, and guesthouses with galleries, booking links, and maps.",
-                video: "/videos/hospitality.mp4",
-              },
-              {
-                count: "2 projects",
-                title: "Food & Restaurants",
-                text: "Menus, opening hours, reservation forms, and event listings.",
-                video: "/videos/food-restaurants.mp4",
-              },
-              {
-                count: "2 projects",
-                title: "E-Commerce",
-                text: "Product catalogs, shopping carts, and checkout flows for local brands.",
-                video: "/videos/e-commerce.mp4",
-              },
-              {
-                count: "1 project",
-                title: "Beauty & Salons",
-                text: "Service menus, stylist profiles, galleries, and WhatsApp booking for salons and spas.",
-                video: "/videos/beauty-salons.mp4",
-              },
-              {
-                count: "3 projects",
-                title: "Personal & School",
-                text: "Portfolio sites, hobby pages, and school project websites.",
-                video: "/videos/personal-school.mp4",
-              },
-            ].map(({ count, title, text, video }) => (
-              <article key={title} className="category-card category-card--video reveal">
-                <video
-                  className="category-card-video"
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  preload="metadata"
-                  aria-hidden="true"
-                >
-                  <source src={video} type="video/mp4" />
-                </video>
-                <div className="category-card-content">
-                  <span className="category-count">{count}</span>
-                  <h3>{title}</h3>
-                  <p>{text}</p>
-                </div>
-              </article>
+            {workCategories.map((category) => (
+              <CategoryVideoCard key={category.title} category={category} />
             ))}
           </div>
         </div>

@@ -12,8 +12,16 @@
 .colorful-bg__mesh {
   position: absolute;
   inset: 0;
-  background:
-    linear-gradient(125deg, rgba(255, 251, 235, 0.9) 0%, rgba(224, 242, 254, 0.85) 35%, rgba(254, 243, 199, 0.9) 65%, rgba(255, 237, 213, 0.85) 100%);
+  background: linear-gradient(
+    125deg,
+    rgba(255, 251, 235, 0.92) 0%,
+    rgba(186, 230, 253, 0.88) 25%,
+    rgba(254, 243, 199, 0.9) 50%,
+    rgba(221, 214, 254, 0.75) 75%,
+    rgba(255, 237, 213, 0.88) 100%
+  );
+  background-size: 200% 200%;
+  animation: mesh-gradient-shift 20s ease infinite;
 }
 
 .colorful-bg__rainbow {
@@ -111,6 +119,18 @@
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+@keyframes mesh-gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
   }
 }
 
@@ -313,6 +333,7 @@ main {
 @media (prefers-reduced-motion: reduce) {
   .colorful-bg__blob,
   .colorful-bg__rainbow,
+  .colorful-bg__mesh,
   .floating-sticker-inner,
   .floating-sticker-inner--shine::before {
     animation: none;
