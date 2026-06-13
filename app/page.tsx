@@ -34,6 +34,11 @@ export default function HomePage() {
           />
           <div className="hero-overlay" />
           <div className="hero-pattern" />
+          <div className="hero-orbs" aria-hidden="true">
+            <span className="hero-orb hero-orb--1" />
+            <span className="hero-orb hero-orb--2" />
+            <span className="hero-orb hero-orb--3" />
+          </div>
         </div>
         <div className="container hero-content">
           <p className="hero-tag hero-animate">Young Web Creator · Goa, India</p>
@@ -79,6 +84,8 @@ export default function HomePage() {
           <div className="scroll-line" />
         </div>
       </section>
+
+      <div className="section-wave" aria-hidden="true" />
 
       <section className="home-intro section">
         <div className="container home-intro-grid">

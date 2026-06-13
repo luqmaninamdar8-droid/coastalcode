@@ -41,7 +41,7 @@ export default function Header() {
 
   return (
     <header
-      className={`header header-enter ${scrolled ? "scrolled" : ""}`}
+      className={`header header-enter${isHome ? " header--home" : ""} ${scrolled ? "scrolled" : ""}`}
       id="header"
     >
       <nav className="nav container">
