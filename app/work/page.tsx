@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import ClientLogos from "@/components/ClientLogos";
 import CtaBanner from "@/components/CtaBanner";
 import PageHero from "@/components/PageHero";
 import WorkCard from "@/components/WorkCard";
@@ -36,6 +37,12 @@ export default function WorkPage() {
           </div>
         </div>
       </section>
+
+      <ClientLogos
+        compact
+        title="Clients & collaborators"
+        subtitle=""
+      />
 
       <section className="work section">
         <div className="container">

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import ClientLogos from "@/components/ClientLogos";
 import CtaBanner from "@/components/CtaBanner";
 import WorkCard from "@/components/WorkCard";
 import { featuredProjects } from "@/lib/projects";
@@ -168,6 +169,8 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <ClientLogos />
 
       <section className="section services-preview">
         <div className="container">

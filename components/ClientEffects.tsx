@@ -7,7 +7,7 @@ const staggerSelectors =
   ".services-grid, .work-grid, .process-steps, .teaser-grid, .values-grid, .services-preview-grid, .highlight-list, .who-help-grid, .faq-list, .types-grid, .testimonials-grid, .stats-row, .work-stats-grid, .categories-grid, .approach-steps, .about-facts-grid, .timeline-list, .goals-grid, .contact-quick-grid, .contact-steps, .skills-grid, .project-body-grid, .categories-grid";
 
 const motionCardSelector =
-  ".work-card, .preview-card, .teaser-card, .service-card, .who-card, .testimonial-card, .fact-card, .value-card, .goal-card, .category-card, .contact-quick-card";
+  ".work-card, .preview-card, .teaser-card, .service-card, .who-card, .testimonial-card, .fact-card, .value-card, .goal-card, .category-card, .contact-quick-card, .client-logo-card";
 
 export default function ClientEffects() {
   const pathname = usePathname();

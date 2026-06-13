@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 56" fill="none">
+  <circle cx="28" cy="28" r="22" fill="#06B6D4"/>
+  <path d="M16 34 Q28 14 40 34" stroke="#fff" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  <circle cx="28" cy="34" r="3" fill="#fff"/>
+  <text x="58" y="34" font-family="Georgia, serif" font-size="13" font-weight="700" fill="#0E7490">Palolem Surf School</text>
+</svg>

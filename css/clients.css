@@ -1,0 +1,141 @@
+/* ── Client logos marquee ── */
+.client-logos {
+  padding-block: 4rem 5rem;
+  overflow: hidden;
+}
+
+.client-logos--compact {
+  padding-block: 3rem;
+}
+
+.client-logos--compact .section-header {
+  margin-bottom: 2rem;
+}
+
+.client-logos-marquee {
+  position: relative;
+  width: 100%;
+  mask-image: linear-gradient(
+    90deg,
+    transparent,
+    black 12%,
+    black 88%,
+    transparent
+  );
+}
+
+.client-logos-fade {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 80px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.client-logos-fade--left {
+  left: 0;
+  background: linear-gradient(90deg, rgba(255, 251, 235, 0.95), transparent);
+}
+
+.client-logos-fade--right {
+  right: 0;
+  background: linear-gradient(-90deg, rgba(255, 251, 235, 0.95), transparent);
+}
+
+.client-logos-track {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  width: max-content;
+  animation: client-marquee 40s linear infinite;
+  padding-block: 0.5rem;
+}
+
+.client-logos-track:hover {
+  animation-play-state: paused;
+}
+
+.client-logo-card {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 220px;
+  height: 88px;
+  padding: 1rem 1.5rem;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(12, 74, 110, 0.08);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  transition:
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.35s ease,
+    border-color 0.35s ease;
+}
+
+.client-logo-card:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: var(--shadow-md);
+  border-color: rgba(14, 165, 233, 0.25);
+}
+
+.client-logo-img {
+  width: auto;
+  height: 40px;
+  max-width: 180px;
+  object-fit: contain;
+  filter: saturate(1.05);
+  transition: filter 0.3s ease;
+}
+
+.client-logo-card:hover .client-logo-img {
+  filter: saturate(1.2);
+}
+
+@keyframes client-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 768px) {
+  .client-logo-card {
+    min-width: 180px;
+    height: 76px;
+    padding: 0.75rem 1rem;
+  }
+
+  .client-logo-img {
+    height: 32px;
+  }
+
+  .client-logos-track {
+    animation-duration: 32s;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .client-logos-track {
+    animation: none;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    max-width: 900px;
+    margin-inline: auto;
+    padding-inline: 1rem;
+    gap: 1rem;
+  }
+
+  .client-logos-marquee {
+    mask-image: none;
+  }
+
+  .client-logos-fade {
+    display: none;
+  }
+}
