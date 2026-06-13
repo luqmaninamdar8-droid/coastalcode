@@ -141,6 +141,13 @@ export const chatFaqs: ChatFaq[] = [
     keywords: ["school", "science", "fair", "project", "homework", "assignment", "student", "class"],
   },
   {
+    id: "about",
+    question: "Who is Luqman?",
+    answer:
+      "Luqman Inamdar is a 13-year-old web creator from Goa. He runs Coastal Code and builds custom websites for resorts, restaurants, shops, salons, and school projects — all hand-coded with modern tools.",
+    keywords: ["luqman", "inamdar", "coastal code", "about", "creator", "developer", "founder", "owner", "boy", "student"],
+  },
+  {
     id: "contact",
     question: "How can I contact Luqman?",
     answer:
@@ -172,6 +179,7 @@ const followUpMap: Record<string, string[]> = {
   update: ["Starting prices?", "Contact Luqman", "What services?"],
   seo: ["What services?", "See your work", "Starting prices?"],
   school: ["Starting prices?", "How long does it take?", "Contact Luqman"],
+  about: ["See your work", "What services?", "Contact Luqman"],
   contact: ["Get a free quote", "Starting prices?", "See your work"],
 };
 
@@ -197,6 +205,12 @@ const intentReplies: Record<string, ChatResponse> = {
       "I can answer questions about Coastal Code — pricing, how long sites take, services, portfolio, payments, and how to contact Luqman. Pick a topic or type your question!",
     suggestions: quickReplies,
   },
+  identity: {
+    answer:
+      "I'm the Coastal Code assistant — a friendly FAQ bot on Luqman's website. Luqman Inamdar is a 13-year-old web creator from Goa who builds websites under Coastal Code. I answer common questions instantly; Luqman replies personally on WhatsApp for project details.",
+    suggestions: ["What services?", "See your work", "Contact Luqman"],
+    links: [{ label: "About Luqman", href: "/about" }],
+  },
 };
 
 function tokenize(text: string): string[] {
@@ -210,6 +224,18 @@ function tokenize(text: string): string[] {
 function detectIntent(text: string): keyof typeof intentReplies | null {
   const normalized = text.toLowerCase().trim();
 
+  if (
+    /\b(who are you|what are you|who is this|what is this|your name|what's your name|what is your name|who am i talking to)\b/.test(normalized) ||
+    /^(who are you|what are you|who is this|what is this)\??$/.test(normalized) ||
+    /\b(are you (a )?(bot|ai|robot|human|real|person))\b/.test(normalized)
+  ) {
+    return "identity";
+  }
+  if (
+    /\b(who is luqman|about luqman|tell me about luqman|what is coastal code|who runs coastal|who made this website)\b/.test(normalized)
+  ) {
+    return "identity";
+  }
   if (/^(hi|hello|hey|hola|yo|sup|good morning|good afternoon|good evening)\b/.test(normalized)) {
     return "greeting";
   }
@@ -274,7 +300,9 @@ export function findChatResponse(input: string): ChatResponse {
       suggestions: followUpMap[best.id]?.slice(0, 3),
       links: best.id === "portfolio"
         ? [{ label: "View Work page", href: "/work" }]
-        : best.id === "contact"
+        : best.id === "about"
+          ? [{ label: "About Luqman", href: "/about" }]
+          : best.id === "contact"
           ? [
               { label: "Contact page", href: "/contact" },
               { label: "WhatsApp Luqman", href: WHATSAPP_URL },
