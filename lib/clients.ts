@@ -42,4 +42,10 @@ export const clients: Client[] = [
     category: "Startup",
     logo: "/clients/monsoon-labs.svg",
   },
+  {
+    name: "Bloom Beauty Studio",
+    slug: "bloom-beauty-studio",
+    category: "Beauty",
+    logo: "/clients/bloom-beauty.svg",
+  },
 ];

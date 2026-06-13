@@ -403,6 +403,59 @@ export const projects: Project[] = [
     ctaLabel: "Start Your First Project",
   },
   {
+    slug: "bloom-beauty-studio",
+    title: "Bloom Beauty Studio",
+    tag: "Beauty · Client Project",
+    category: "Beauty",
+    description:
+      "A modern salon and spa website with service menus, stylist profiles, gallery, and online appointment booking via WhatsApp.",
+    cardDescription:
+      "Salon & spa site with services, gallery, and WhatsApp appointment booking.",
+    image:
+      "https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1200&q=80",
+    imageAlt: "Modern beauty salon interior with styling chairs",
+    tags: ["HTML", "CSS", "WhatsApp"],
+    meta: [
+      { label: "Role", value: "Designer & Developer" },
+      { label: "Timeline", value: "2 weeks" },
+      { label: "Pages", value: "5 pages" },
+      { label: "Year", value: "2025" },
+    ],
+    technologies: ["HTML5", "CSS3", "JavaScript", "Grid", "WhatsApp"],
+    pagesBuilt: "Home, Services, Gallery, About, Book",
+    sections: [
+      {
+        title: "Overview",
+        paragraphs: [
+          "Bloom Beauty Studio is a popular salon in Panaji offering hair, skin, and bridal services. The owner wanted a stylish website that felt as premium as the studio itself — with easy booking for busy clients.",
+          "I built a 5-page site with a soft pink and cream palette, service pricing, and a gallery of transformations.",
+        ],
+      },
+      {
+        title: "The challenge",
+        paragraphs: [
+          "Most bookings came through Instagram DMs, which was hard to manage. They needed a clear service menu with prices, stylist info, and one-tap WhatsApp booking — especially on mobile.",
+        ],
+      },
+      {
+        title: "Key features",
+        features: [
+          "Service menu with categories — hair, skin, nails, and bridal packages",
+          "Stylist profile cards with photos and specialities",
+          "Before & after gallery with lightbox view",
+          "One-click WhatsApp appointment booking",
+          "Opening hours and Google Maps location",
+        ],
+      },
+      {
+        title: "Result",
+        result:
+          "Online bookings through WhatsApp increased within the first month. Clients said finding services and prices on the site saved time for everyone.",
+      },
+    ],
+    ctaLabel: "Start a Similar Project",
+  },
+  {
     slug: "science-fair-2025",
     title: "Science Fair 2025",
     tag: "School · Team Project",

@@ -25,7 +25,7 @@ export default function WorkPage() {
           <div className="work-stats-grid">
             {[
               ["10+", "Projects Completed"],
-              ["6", "Categories Covered"],
+              ["7", "Categories Covered"],
               ["100%", "Hand-Coded"],
               ["Goa", "Made With Love"],
             ].map(([num, label]) => (
@@ -71,6 +71,7 @@ export default function WorkPage() {
               ["3 projects", "Hospitality", "Resorts, homestays, and guesthouses with galleries, booking links, and maps."],
               ["2 projects", "Food & Restaurants", "Menus, opening hours, reservation forms, and event listings."],
               ["2 projects", "E-Commerce", "Product catalogs, shopping carts, and checkout flows for local brands."],
+              ["1 project", "Beauty & Salons", "Service menus, stylist profiles, galleries, and WhatsApp booking for salons and spas."],
               ["3 projects", "Personal & School", "Portfolio sites, hobby pages, and school project websites."],
             ].map(([count, title, text]) => (
               <article key={title} className="category-card reveal">
