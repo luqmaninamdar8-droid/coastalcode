@@ -1,0 +1,231 @@
+/* ── Colorful animated background + floating stickers ── */
+
+/* Vibrant mesh backdrop */
+.colorful-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -3;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.colorful-bg__mesh {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(125deg, rgba(255, 251, 235, 0.9) 0%, rgba(224, 242, 254, 0.85) 35%, rgba(254, 243, 199, 0.9) 65%, rgba(255, 237, 213, 0.85) 100%);
+}
+
+.colorful-bg__rainbow {
+  position: absolute;
+  inset: -50%;
+  background: conic-gradient(
+    from 180deg at 50% 50%,
+    rgba(249, 115, 22, 0.08) 0deg,
+    rgba(251, 191, 36, 0.1) 60deg,
+    rgba(34, 197, 94, 0.08) 120deg,
+    rgba(14, 165, 233, 0.12) 180deg,
+    rgba(168, 85, 247, 0.1) 240deg,
+    rgba(236, 72, 153, 0.08) 300deg,
+    rgba(249, 115, 22, 0.08) 360deg
+  );
+  animation: rainbow-spin 60s linear infinite;
+  opacity: 0.55;
+}
+
+.colorful-bg__blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(70px);
+  opacity: 0.55;
+  animation: blob-drift var(--blob-dur, 22s) ease-in-out infinite alternate;
+}
+
+.colorful-bg__blob--1 {
+  --blob-dur: 18s;
+  width: min(55vw, 480px);
+  height: min(55vw, 480px);
+  top: -15%;
+  left: -10%;
+  background: #38bdf8;
+}
+
+.colorful-bg__blob--2 {
+  --blob-dur: 24s;
+  width: min(45vw, 400px);
+  height: min(45vw, 400px);
+  top: 20%;
+  right: -12%;
+  background: #fb923c;
+  animation-delay: -4s;
+}
+
+.colorful-bg__blob--3 {
+  --blob-dur: 20s;
+  width: min(50vw, 420px);
+  height: min(50vw, 420px);
+  bottom: -10%;
+  left: 15%;
+  background: #a855f7;
+  animation-delay: -8s;
+}
+
+.colorful-bg__blob--4 {
+  --blob-dur: 26s;
+  width: min(40vw, 360px);
+  height: min(40vw, 360px);
+  top: 45%;
+  left: -8%;
+  background: #22c55e;
+  animation-delay: -12s;
+}
+
+.colorful-bg__blob--5 {
+  --blob-dur: 22s;
+  width: min(38vw, 340px);
+  height: min(38vw, 340px);
+  bottom: 15%;
+  right: 10%;
+  background: #ec4899;
+  animation-delay: -6s;
+}
+
+@keyframes blob-drift {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(30px, -40px) scale(1.08);
+  }
+  66% {
+    transform: translate(-25px, 25px) scale(0.95);
+  }
+  100% {
+    transform: translate(15px, -20px) scale(1.05);
+  }
+}
+
+@keyframes rainbow-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Override body — layer with colorful bg */
+body {
+  background: transparent !important;
+}
+
+body::before {
+  z-index: -2;
+  opacity: 0.25;
+}
+
+main {
+  position: relative;
+  z-index: 1;
+}
+
+.footer {
+  position: relative;
+  z-index: 1;
+}
+
+.header {
+  z-index: 100;
+}
+
+/* ── Floating stickers (Freepik-style) ── */
+.floating-stickers {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.floating-sticker {
+  position: absolute;
+  animation: sticker-float var(--duration, 18s) ease-in-out infinite;
+  animation-delay: var(--delay, 0s);
+}
+
+.floating-sticker-inner {
+  padding: 6px;
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 18px;
+  box-shadow:
+    0 4px 0 rgba(12, 74, 110, 0.08),
+    0 12px 28px rgba(12, 74, 110, 0.15),
+    0 0 0 3px rgba(255, 255, 255, 0.9);
+  transform: rotate(var(--rotate, 0deg));
+  transition: transform 0.3s ease;
+}
+
+.floating-sticker-img {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+}
+
+@keyframes sticker-float {
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(var(--rotate, 0deg));
+  }
+  25% {
+    transform: translate(12px, -22px) rotate(calc(var(--rotate, 0deg) + 6deg));
+  }
+  50% {
+    transform: translate(-8px, -35px) rotate(calc(var(--rotate, 0deg) - 4deg));
+  }
+  75% {
+    transform: translate(18px, -12px) rotate(calc(var(--rotate, 0deg) + 3deg));
+  }
+}
+
+/* Hide side stickers on tablet — keep a few */
+@media (max-width: 1100px) {
+  .floating-sticker:nth-child(n + 6) {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .floating-sticker:nth-child(n + 4) {
+    display: none;
+  }
+
+  .floating-sticker-inner {
+    padding: 4px;
+    border-radius: 14px;
+  }
+
+  .floating-sticker-img {
+    width: 48px !important;
+    height: 48px !important;
+  }
+
+  .colorful-bg__blob {
+    filter: blur(50px);
+    opacity: 0.4;
+  }
+}
+
+@media (max-width: 480px) {
+  .floating-stickers {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .colorful-bg__blob,
+  .colorful-bg__rainbow,
+  .floating-sticker {
+    animation: none;
+  }
+}

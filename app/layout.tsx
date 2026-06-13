@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { DM_Sans, Fraunces } from "next/font/google";
 import ClientEffects from "@/components/ClientEffects";
+import ColorfulBackground from "@/components/ColorfulBackground";
+import FloatingStickers from "@/components/FloatingStickers";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import "./globals.css";
@@ -34,6 +36,8 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${dmSans.variable} ${fraunces.variable}`}>
       <body>
+        <ColorfulBackground />
+        <FloatingStickers />
         <Header />
         <main>{children}</main>
         <Footer />
