@@ -1,4 +1,51 @@
-/* ── WhatsApp float + FAQ chatbot ── */
+/* ── Scroll to top + WhatsApp float + FAQ chatbot ── */
+
+.scroll-top-btn {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 1.5rem;
+  z-index: 200;
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 50%;
+  background: var(--gradient-ocean);
+  color: #fff;
+  cursor: pointer;
+  box-shadow: var(--shadow-lg), var(--glow-ocean);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(16px) scale(0.9);
+  transition:
+    opacity 0.35s ease,
+    visibility 0.35s ease,
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.3s ease;
+}
+
+.scroll-top-btn.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+}
+
+.scroll-top-btn:hover {
+  transform: translateY(-3px) scale(1.06);
+  box-shadow: var(--shadow-lg), 0 0 28px rgba(14, 165, 233, 0.45);
+}
+
+.scroll-top-btn:focus-visible {
+  outline: 3px solid rgba(14, 165, 233, 0.45);
+  outline-offset: 3px;
+}
+
+.scroll-top-btn-icon {
+  width: 24px;
+  height: 24px;
+}
 
 .whatsapp-float {
   position: fixed;
@@ -322,6 +369,18 @@
 }
 
 @media (max-width: 480px) {
+  .scroll-top-btn {
+    bottom: 1rem;
+    left: 1rem;
+    width: 48px;
+    height: 48px;
+  }
+
+  .scroll-top-btn-icon {
+    width: 22px;
+    height: 22px;
+  }
+
   .whatsapp-float {
     bottom: 1rem;
     right: 1rem;
@@ -339,6 +398,10 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .scroll-top-btn {
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+  }
+
   .whatsapp-float {
     animation: none;
   }

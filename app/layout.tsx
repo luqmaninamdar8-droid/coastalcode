@@ -6,6 +6,7 @@ import FaqChatbot from "@/components/FaqChatbot";
 import FloatingStickers from "@/components/FloatingStickers";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import ScrollToTopButton from "@/components/ScrollToTopButton";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import "./globals.css";
 
@@ -44,6 +45,7 @@ export default function RootLayout({
         <main>{children}</main>
         <Footer />
         <FaqChatbot />
+        <ScrollToTopButton />
         <WhatsAppButton />
         <ClientEffects />
       </body>
