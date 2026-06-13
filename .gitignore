@@ -4,3 +4,7 @@ dist/
 out/
 .DS_Store
 *.local
+
+# Large video assets — keep local only
+videos/
+public/videos/
