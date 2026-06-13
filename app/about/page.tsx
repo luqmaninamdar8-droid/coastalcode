@@ -112,7 +112,7 @@ export default function AboutPage() {
               ["2025", "First client projects", "Built websites for a local homestay and café. Won first place at the school science fair."],
               ["2026", "This portfolio", "Designed and coded every page of Coastal Code myself — now rebuilt with Next.js. Made in Goa, by me."],
             ].map(([year, title, text]) => (
-              <article key={year} className="timeline-item reveal">
+              <article key={year} className="timeline-item reveal reveal-left">
                 <span className="timeline-year">{year}</span>
                 <h3>{title}</h3>
                 <p>{text}</p>

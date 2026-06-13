@@ -1,0 +1,363 @@
+/* ── Site-wide motion layer ── */
+
+/* Scroll progress bar */
+#scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0;
+  z-index: 1000;
+  background: linear-gradient(90deg, #f97316, #fb923c, #0ea5e9);
+  box-shadow: 0 0 12px rgba(249, 115, 22, 0.6);
+  transition: width 0.08s linear;
+  pointer-events: none;
+}
+
+/* Page route enter */
+main.page-enter {
+  animation: page-slide-in 0.65s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes page-slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Reveal variants */
+.reveal-blur {
+  filter: blur(8px);
+}
+
+.reveal-blur.visible {
+  filter: blur(0);
+}
+
+.reveal-pop {
+  transform: scale(0.88);
+}
+
+.reveal-pop.visible {
+  transform: scale(1);
+}
+
+.reveal-rotate {
+  transform: translateY(24px) rotate(-2deg);
+}
+
+.reveal-rotate.visible {
+  transform: translateY(0) rotate(0);
+}
+
+/* Staggered children inherit smoother easing */
+.reveal.visible {
+  transition:
+    opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Section header animated underline */
+.section-header.visible h2::after,
+.page-hero-content.visible .page-hero-title::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 3px;
+  margin: 1rem auto 0;
+  border-radius: var(--radius-full);
+  background: var(--gradient-sunset);
+  animation: line-grow 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  transform-origin: center;
+}
+
+@keyframes line-grow {
+  from {
+    transform: scaleX(0);
+    opacity: 0;
+  }
+  to {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
+/* 3D tilt cards */
+.motion-card {
+  transform-style: preserve-3d;
+  will-change: transform;
+  transition:
+    transform 0.15s ease-out,
+    box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.motion-card:hover {
+  box-shadow: var(--shadow-xl);
+}
+
+/* Work link arrow slide */
+.work-link,
+.teaser-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  transition: gap 0.3s cubic-bezier(0.22, 1, 0.36, 1), color 0.3s ease;
+}
+
+.work-card:hover .work-link,
+.teaser-card:hover .teaser-link {
+  gap: 0.6rem;
+}
+
+/* Process / timeline motion */
+.process-step.visible .step-number,
+.approach-step.visible .approach-number,
+.timeline-item.visible .timeline-year,
+.goal-card.visible .goal-number {
+  animation: pop-in 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes pop-in {
+  from {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.timeline-item.visible {
+  animation: timeline-slide 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes timeline-slide {
+  from {
+    opacity: 0;
+    transform: translateX(-24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Skill bar fill animation */
+.skill-bar-fill {
+  width: 0 !important;
+  transition: width 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.skill-bar-fill.bar-animate {
+  width: var(--bar-target, 0%) !important;
+}
+
+/* FAQ open motion */
+.faq-item {
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.faq-item[open] {
+  box-shadow: var(--shadow-md);
+  border-color: rgba(14, 165, 233, 0.25);
+}
+
+.faq-item summary {
+  transition: color 0.25s ease;
+}
+
+.faq-item[open] summary {
+  color: var(--color-ocean);
+}
+
+/* Hero parallax layer */
+.hero-bg-image {
+  will-change: transform;
+}
+
+.hero-orbs .hero-orb {
+  will-change: transform;
+}
+
+/* Floating particles */
+.motion-particle {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  animation: particle-drift var(--dur, 14s) ease-in-out infinite;
+  animation-delay: var(--delay, 0s);
+  opacity: var(--opacity, 0.5);
+}
+
+@keyframes particle-drift {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate(12px, -20px) scale(1.1);
+  }
+  50% {
+    transform: translate(-8px, -35px) scale(0.9);
+  }
+  75% {
+    transform: translate(16px, -15px) scale(1.05);
+  }
+}
+
+/* Button pulse on hero CTA */
+.hero .btn-primary.btn-glow {
+  animation: btn-pulse 2.5s ease-in-out infinite;
+}
+
+@keyframes btn-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(249, 115, 22, 0.45);
+  }
+  50% {
+    box-shadow: 0 0 0 12px rgba(249, 115, 22, 0);
+  }
+}
+
+/* CTA banner inner shimmer */
+.cta-banner-inner {
+  animation: cta-glow 4s ease-in-out infinite alternate;
+}
+
+@keyframes cta-glow {
+  from {
+    box-shadow: var(--shadow-xl), 0 0 40px rgba(14, 165, 233, 0.2);
+  }
+  to {
+    box-shadow: var(--shadow-xl), 0 0 60px rgba(249, 115, 22, 0.25);
+  }
+}
+
+/* Nav CTA subtle bounce */
+.nav-links a.nav-cta {
+  animation: nav-cta-bounce 3s ease-in-out infinite;
+}
+
+@keyframes nav-cta-bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-2px);
+  }
+}
+
+.nav-links a.nav-cta:hover {
+  animation: none;
+}
+
+/* Work stat numbers count glow */
+.work-stat.visible .work-stat-number {
+  animation: stat-flash 0.6s ease forwards;
+}
+
+@keyframes stat-flash {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.08);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Project hero image reveal */
+.project-hero-image.visible {
+  animation: image-reveal 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes image-reveal {
+  from {
+    opacity: 0;
+    transform: scale(1.04) translateY(20px);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    filter: blur(0);
+  }
+}
+
+/* Contact form focus glow */
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  animation: input-glow 0.3s ease forwards;
+  box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.15);
+}
+
+@keyframes input-glow {
+  from {
+    box-shadow: 0 0 0 0 rgba(14, 165, 233, 0);
+  }
+}
+
+/* Footer wave motion */
+.footer::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 200%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.03),
+    transparent
+  );
+  animation: footer-shine 8s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes footer-shine {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #scroll-progress {
+    display: none;
+  }
+
+  main.page-enter,
+  .motion-particle,
+  .hero .btn-primary.btn-glow,
+  .cta-banner-inner,
+  .nav-links a.nav-cta,
+  .footer::after {
+    animation: none;
+  }
+
+  .motion-card {
+    transform: none !important;
+  }
+
+  .skill-bar-fill {
+    width: var(--bar-target, auto) !important;
+    transition: none;
+  }
+}

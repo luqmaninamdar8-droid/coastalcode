@@ -38,6 +38,42 @@ export default function HomePage() {
             <span className="hero-orb hero-orb--1" />
             <span className="hero-orb hero-orb--2" />
             <span className="hero-orb hero-orb--3" />
+            <span
+              className="motion-particle"
+              style={{
+                width: 6,
+                height: 6,
+                top: "18%",
+                left: "12%",
+                background: "rgba(255,255,255,0.6)",
+                ["--dur" as string]: "12s",
+                ["--delay" as string]: "0s",
+              }}
+            />
+            <span
+              className="motion-particle"
+              style={{
+                width: 4,
+                height: 4,
+                top: "55%",
+                left: "78%",
+                background: "rgba(251,191,36,0.7)",
+                ["--dur" as string]: "16s",
+                ["--delay" as string]: "-4s",
+              }}
+            />
+            <span
+              className="motion-particle"
+              style={{
+                width: 8,
+                height: 8,
+                top: "72%",
+                left: "25%",
+                background: "rgba(14,165,233,0.5)",
+                ["--dur" as string]: "20s",
+                ["--delay" as string]: "-8s",
+              }}
+            />
           </div>
         </div>
         <div className="container hero-content">
@@ -135,7 +171,7 @@ export default function HomePage() {
 
       <section className="section services-preview">
         <div className="container">
-          <div className="section-header reveal">
+          <div className="section-header reveal reveal-blur">
             <span className="section-tag">Services</span>
             <h2>What I can build for you</h2>
             <p>From simple landing pages to full websites — here&apos;s what I offer.</p>
@@ -164,7 +200,7 @@ export default function HomePage() {
 
       <section className="section featured-work">
         <div className="container">
-          <div className="section-header reveal">
+          <div className="section-header reveal reveal-blur">
             <span className="section-tag">Portfolio</span>
             <h2>Recent projects</h2>
             <p>A few sites I&apos;ve built — click through to see the full collection.</p>
@@ -184,7 +220,7 @@ export default function HomePage() {
 
       <section className="section skills-section">
         <div className="container">
-          <div className="section-header reveal">
+          <div className="section-header reveal reveal-blur">
             <span className="section-tag">Skills</span>
             <h2>Tools I work with</h2>
             <p>My stack is growing every week — these are my go-to technologies right now.</p>
@@ -201,7 +237,7 @@ export default function HomePage() {
 
       <section className="section process-preview">
         <div className="container">
-          <div className="section-header reveal">
+          <div className="section-header reveal reveal-blur">
             <span className="section-tag">Process</span>
             <h2>How we&apos;ll work together</h2>
             <p>Simple steps — no confusing jargon, just clear communication.</p>
@@ -225,7 +261,7 @@ export default function HomePage() {
 
       <section className="section">
         <div className="container">
-          <div className="section-header reveal">
+          <div className="section-header reveal reveal-blur">
             <span className="section-tag">Explore</span>
             <h2>More to discover</h2>
             <p>Dive deeper into my services, projects, and coding journey.</p>

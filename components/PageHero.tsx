@@ -10,8 +10,8 @@ export default function PageHero({ tag, title, subtitle, short }: PageHeroProps)
     <section className={`page-hero${short ? " page-hero-short" : ""}`}>
       <div className="page-hero-bg" />
       <div className="container page-hero-content">
-        <span className="section-tag reveal">{tag}</span>
-        <h1 className="page-hero-title reveal">{title}</h1>
+        <span className="section-tag reveal reveal-pop">{tag}</span>
+        <h1 className="page-hero-title reveal reveal-blur">{title}</h1>
         <p className="page-hero-subtitle reveal">{subtitle}</p>
       </div>
     </section>

@@ -21,23 +21,18 @@ export default function WorkPage() {
 
       <section className="work-stats section">
         <div className="container">
-          <div className="work-stats-grid reveal">
-            <div className="work-stat">
-              <span className="work-stat-number">10+</span>
-              <span className="work-stat-label">Projects Completed</span>
-            </div>
-            <div className="work-stat">
-              <span className="work-stat-number">6</span>
-              <span className="work-stat-label">Categories Covered</span>
-            </div>
-            <div className="work-stat">
-              <span className="work-stat-number">100%</span>
-              <span className="work-stat-label">Hand-Coded</span>
-            </div>
-            <div className="work-stat">
-              <span className="work-stat-number">Goa</span>
-              <span className="work-stat-label">Made With Love</span>
-            </div>
+          <div className="work-stats-grid">
+            {[
+              ["10+", "Projects Completed"],
+              ["6", "Categories Covered"],
+              ["100%", "Hand-Coded"],
+              ["Goa", "Made With Love"],
+            ].map(([num, label]) => (
+              <div key={label} className="work-stat reveal reveal-pop">
+                <span className="work-stat-number">{num}</span>
+                <span className="work-stat-label">{label}</span>
+              </div>
+            ))}
           </div>
         </div>
       </section>
