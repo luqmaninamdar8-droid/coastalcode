@@ -2,9 +2,11 @@ import type { Metadata } from "next";
 import { DM_Sans, Fraunces } from "next/font/google";
 import ClientEffects from "@/components/ClientEffects";
 import ColorfulBackground from "@/components/ColorfulBackground";
+import FaqChatbot from "@/components/FaqChatbot";
 import FloatingStickers from "@/components/FloatingStickers";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import WhatsAppButton from "@/components/WhatsAppButton";
 import "./globals.css";
 
 const dmSans = DM_Sans({
@@ -41,6 +43,8 @@ export default function RootLayout({
         <Header />
         <main>{children}</main>
         <Footer />
+        <FaqChatbot />
+        <WhatsAppButton />
         <ClientEffects />
       </body>
     </html>

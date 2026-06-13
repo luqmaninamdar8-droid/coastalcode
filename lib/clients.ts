@@ -37,12 +37,6 @@ export const clients: Client[] = [
     logo: "/clients/mapusa-market.svg",
   },
   {
-    name: "Palolem Surf School",
-    slug: "palolem-surf-school",
-    category: "Sports",
-    logo: "/clients/palolem-surf.svg",
-  },
-  {
     name: "Monsoon Labs",
     slug: "monsoon-labs",
     category: "Startup",

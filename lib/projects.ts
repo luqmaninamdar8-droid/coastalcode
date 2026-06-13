@@ -453,59 +453,6 @@ export const projects: Project[] = [
     ],
     ctaLabel: "Need a School Project Site?",
   },
-  {
-    slug: "palolem-surf-school",
-    title: "Palolem Surf School",
-    tag: "Sports · Client Project",
-    category: "Sports",
-    description:
-      "A vibrant surf school website with lesson packages, instructor profiles, and easy WhatsApp booking for tourists visiting South Goa.",
-    cardDescription:
-      "Surf lesson site with packages, instructor profiles, and WhatsApp booking.",
-    image:
-      "https://images.unsplash.com/photo-1502680390469-be75c86b636f?auto=format&fit=crop&w=1200&q=80",
-    imageAlt: "Surfer riding a wave at Palolem Beach",
-    tags: ["HTML", "CSS", "WhatsApp"],
-    meta: [
-      { label: "Role", value: "Designer & Developer" },
-      { label: "Timeline", value: "10 days" },
-      { label: "Pages", value: "4 pages" },
-      { label: "Year", value: "2025" },
-    ],
-    technologies: ["HTML5", "CSS3", "JavaScript", "Grid", "WhatsApp"],
-    pagesBuilt: "Home, Lessons, Instructors, Contact",
-    sections: [
-      {
-        title: "Overview",
-        paragraphs: [
-          "Palolem Surf School wanted a website that matched the energy of their beach lessons — bright, fast, and easy to book from a phone after arriving in Goa.",
-          "I built a 4-page site with lesson tiers, safety info, and a gallery of instructors and students catching their first waves.",
-        ],
-      },
-      {
-        title: "The challenge",
-        paragraphs: [
-          "Most enquiries came from tourists on mobile with patchy data. The site had to load quickly, show prices clearly, and make booking a lesson feel as simple as sending a WhatsApp message.",
-        ],
-      },
-      {
-        title: "Key features",
-        features: [
-          "Lesson packages with beginner, intermediate, and group options",
-          "Instructor cards with certifications and languages spoken",
-          "Photo gallery from Palolem Beach sessions",
-          "Sticky WhatsApp booking button on every page",
-          "Seasonal schedule section for monsoon closures",
-        ],
-      },
-      {
-        title: "Result",
-        result:
-          "Lesson bookings through WhatsApp doubled in the first month. The owner said tourists often mentioned finding them through the new site before even reaching the beach.",
-      },
-    ],
-    ctaLabel: "Start a Similar Project",
-  },
 ];
 
 export function getProject(slug: string) {
