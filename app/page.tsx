@@ -1,9 +1,29 @@
 import Image from "next/image";
 import Link from "next/link";
+import type { Metadata } from "next";
 import ClientLogos from "@/components/ClientLogos";
 import CtaBanner from "@/components/CtaBanner";
+import JsonLd from "@/components/JsonLd";
 import WorkCard from "@/components/WorkCard";
 import { featuredProjects } from "@/lib/projects";
+import { breadcrumbJsonLd, createPageMetadata } from "@/lib/seo";
+
+export const metadata: Metadata = createPageMetadata({
+  title:
+    "Coastal Code | Web Design & Website Development in Goa, India",
+  description:
+    "Hire Luqman Inamdar for affordable web design and development in Goa. Coastal Code builds fast, mobile-friendly websites for restaurants, homestays, shops, and personal projects in Panaji.",
+  path: "/",
+  absoluteTitle: true,
+  keywords: [
+    "web design Goa",
+    "website developer Panaji",
+    "affordable website Goa",
+    "Luqman Inamdar web developer",
+    "Coastal Code Goa",
+    "Next.js website India",
+  ],
+});
 
 const skills = [
   "HTML5",
@@ -22,6 +42,9 @@ const skills = [
 export default function HomePage() {
   return (
     <>
+      <JsonLd
+        data={breadcrumbJsonLd([{ name: "Home", path: "/" }])}
+      />
       <section className="hero hero--home" id="hero">
         <div className="hero-bg">
           <Image
@@ -295,6 +318,33 @@ export default function HomePage() {
             </p>
             <footer>— Made in Goa, at age 13</footer>
           </blockquote>
+        </div>
+      </section>
+
+      <section
+        className="section seo-context"
+        aria-label="Web design services in Goa"
+      >
+        <div className="container">
+          <div className="section-header reveal reveal-blur">
+            <span className="section-tag">Coastal Code</span>
+            <h2>Web design &amp; website development in Goa</h2>
+          </div>
+          <div className="seo-context-grid reveal">
+            <p>
+              Coastal Code is a web creation studio based in Panaji, Goa. I design
+              and build custom websites for local businesses, homestays, cafés,
+              salons, school projects, and personal portfolios — with clean code,
+              fast loading speeds, and layouts that work on every phone and laptop.
+            </p>
+            <p>
+              Whether you need a restaurant menu site, a resort booking page, an
+              online shop, or a simple landing page, I handle web design,
+              front-end development, SEO-friendly structure, and launch support.
+              Clients across Goa and India work with me for affordable, modern
+              websites built with HTML, CSS, JavaScript, and Next.js.
+            </p>
+          </div>
         </div>
       </section>
 

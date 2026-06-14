@@ -1,0 +1,31 @@
+.seo-context-grid {
+  display: grid;
+  gap: var(--space-lg);
+  max-width: 72ch;
+}
+
+.seo-context-grid p {
+  color: var(--color-text-muted);
+  line-height: 1.7;
+}
+
+.seo-context-grid p + p {
+  margin-top: var(--space-md);
+}
+
+.footer-seo {
+  margin-top: var(--space-sm);
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+}
+
+.footer-seo a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+.footer-seo a:hover {
+  color: var(--color-accent);
+}

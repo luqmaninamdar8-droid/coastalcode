@@ -1,12 +1,22 @@
 import type { Metadata } from "next";
 import CtaBanner from "@/components/CtaBanner";
+import JsonLd from "@/components/JsonLd";
 import PageHero from "@/components/PageHero";
+import { breadcrumbJsonLd, createPageMetadata, servicesJsonLd } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Services — Luqman Inamdar",
+export const metadata: Metadata = createPageMetadata({
+  title: "Web Design & Development Services in Goa",
   description:
-    "Luqman Inamdar offers web design, development, e-commerce, and more in Goa. Affordable websites built with modern web technologies.",
-};
+    "Coastal Code offers web design, development, e-commerce, hospitality sites, SEO, and site fixes in Goa. Affordable packages for small businesses, homestays, and personal projects.",
+  path: "/services",
+  keywords: [
+    "web design services Goa",
+    "website development Panaji",
+    "affordable web developer Goa",
+    "e-commerce website Goa",
+    "SEO website Goa",
+  ],
+});
 
 const services = [
   {
@@ -50,6 +60,15 @@ const services = [
 export default function ServicesPage() {
   return (
     <>
+      <JsonLd
+        data={[
+          breadcrumbJsonLd([
+            { name: "Home", path: "/" },
+            { name: "Services", path: "/services" },
+          ]),
+          servicesJsonLd(),
+        ]}
+      />
       <PageHero
         tag="What I Offer"
         title="Everything you need to go live"

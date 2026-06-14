@@ -2,20 +2,36 @@ import type { Metadata } from "next";
 import CategoryVideoCard from "@/components/CategoryVideoCard";
 import ClientLogos from "@/components/ClientLogos";
 import CtaBanner from "@/components/CtaBanner";
+import JsonLd from "@/components/JsonLd";
 import PageHero from "@/components/PageHero";
 import WorkCard from "@/components/WorkCard";
 import { workCategories } from "@/lib/categories";
 import { projects } from "@/lib/projects";
+import { breadcrumbJsonLd, createPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Work — Luqman Inamdar",
+export const metadata: Metadata = createPageMetadata({
+  title: "Portfolio & Web Projects in Goa",
   description:
-    "Portfolio of Luqman Inamdar — web projects built in Goa including resorts, restaurants, e-commerce, school projects, and personal sites.",
-};
+    "Browse websites built by Luqman Inamdar — hospitality, restaurants, e-commerce, beauty salons, school projects, and personal sites crafted in Goa with modern web technologies.",
+  path: "/work",
+  keywords: [
+    "web design portfolio Goa",
+    "website examples Goa",
+    "restaurant website Goa",
+    "hotel website developer Goa",
+    "Luqman Inamdar portfolio",
+  ],
+});
 
 export default function WorkPage() {
   return (
     <>
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { name: "Home", path: "/" },
+          { name: "Work", path: "/work" },
+        ])}
+      />
       <PageHero
         tag="My Portfolio"
         title="Projects I'm proud of"

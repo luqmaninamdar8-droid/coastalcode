@@ -2,17 +2,39 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import ContactForm from "@/components/ContactForm";
 import CtaBanner from "@/components/CtaBanner";
+import JsonLd from "@/components/JsonLd";
 import PageHero from "@/components/PageHero";
+import {
+  breadcrumbJsonLd,
+  contactPageJsonLd,
+  createPageMetadata,
+} from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Get in Touch — Luqman Inamdar",
+export const metadata: Metadata = createPageMetadata({
+  title: "Contact — Start Your Website Project in Goa",
   description:
-    "Contact Luqman Inamdar — 13-year-old web creator in Panaji, Goa. Start your website project via email, phone, or WhatsApp.",
-};
+    "Contact Coastal Code in Panaji, Goa for a free website quote. Email hello@coastalcode.goa, WhatsApp +91 98765 43210, or send a message — replies within 24 hours.",
+  path: "/contact",
+  keywords: [
+    "contact web developer Goa",
+    "hire website designer Panaji",
+    "Coastal Code contact",
+    "website quote Goa",
+  ],
+});
 
 export default function ContactPage() {
   return (
     <>
+      <JsonLd
+        data={[
+          breadcrumbJsonLd([
+            { name: "Home", path: "/" },
+            { name: "Contact", path: "/contact" },
+          ]),
+          contactPageJsonLd(),
+        ]}
+      />
       <PageHero
         tag="Get in Touch"
         title="Let's build something together"

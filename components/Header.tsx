@@ -48,7 +48,7 @@ export default function Header() {
         <Link href="/" className="logo">
           <Image
             src="/assets/images/logo.svg"
-            alt=""
+            alt="Coastal Code — home"
             className="logo-img"
             width={40}
             height={40}

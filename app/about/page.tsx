@@ -1,17 +1,33 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import CtaBanner from "@/components/CtaBanner";
+import JsonLd from "@/components/JsonLd";
 import PageHero from "@/components/PageHero";
+import { breadcrumbJsonLd, createPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "About — Luqman Inamdar",
+export const metadata: Metadata = createPageMetadata({
+  title: "About Luqman Inamdar — Young Web Creator in Goa",
   description:
-    "I'm Luqman Inamdar — a 13-year-old web creator from Goa. Read my coding journey and how I learned to build websites.",
-};
+    "Meet Luqman Inamdar, a 13-year-old self-taught web designer and developer from Panaji, Goa. Learn how Coastal Code started and how I build real websites for local clients.",
+  path: "/about",
+  keywords: [
+    "Luqman Inamdar",
+    "young web developer India",
+    "self-taught coder Goa",
+    "Coastal Code founder",
+    "teen web designer Goa",
+  ],
+});
 
 export default function AboutPage() {
   return (
     <>
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { name: "Home", path: "/" },
+          { name: "About", path: "/about" },
+        ])}
+      />
       <PageHero
         tag="My Story"
         title="Hi, I'm Luqman Inamdar"
