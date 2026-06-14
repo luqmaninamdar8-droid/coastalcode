@@ -7,6 +7,7 @@ import FloatingStickers from "@/components/FloatingStickers";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import JsonLd from "@/components/JsonLd";
+import ThemeScript from "@/components/ThemeScript";
 import ScrollToTopButton from "@/components/ScrollToTopButton";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import {
@@ -84,8 +85,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en-IN" className={`${dmSans.variable} ${fraunces.variable}`}>
+    <html
+      lang="en-IN"
+      className={`${dmSans.variable} ${fraunces.variable}`}
+      suppressHydrationWarning
+    >
       <body>
+        <ThemeScript />
         <JsonLd
           data={[organizationJsonLd(), personJsonLd(), websiteJsonLd()]}
         />

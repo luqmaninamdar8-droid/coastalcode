@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { navItems, type NavPage } from "@/lib/nav";
+import ThemeToggle from "@/components/ThemeToggle";
 
 function getActivePage(pathname: string): NavPage {
   if (pathname === "/") return "home";
@@ -74,34 +75,39 @@ export default function Header() {
           <span className="logo-text">Coastal Code</span>
         </Link>
 
-        <div className="nav-desktop">
-          <ul className="nav-links">
-            {navItems.map((item) => {
-              const isActive = item.key === activePage;
-              const classes = [
-                "nav-link",
-                isActive ? "active" : "",
-                item.cta ? "nav-cta" : "",
-              ]
-                .filter(Boolean)
-                .join(" ");
+        <div className="nav-desktop-wrap">
+          <div className="nav-desktop">
+            <ul className="nav-links">
+              {navItems.map((item) => {
+                const isActive = item.key === activePage;
+                const classes = [
+                  "nav-link",
+                  isActive ? "active" : "",
+                  item.cta ? "nav-cta" : "",
+                ]
+                  .filter(Boolean)
+                  .join(" ");
 
-              return (
-                <li key={item.key}>
-                  <Link
-                    href={item.href}
-                    className={classes}
-                    aria-current={isActive ? "page" : undefined}
-                  >
-                    {item.label}
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
+                return (
+                  <li key={item.key}>
+                    <Link
+                      href={item.href}
+                      className={classes}
+                      aria-current={isActive ? "page" : undefined}
+                    >
+                      {item.label}
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+          <ThemeToggle />
         </div>
 
-        <button
+        <div className="nav-actions">
+          <ThemeToggle className="theme-toggle--mobile" />
+          <button
           type="button"
           className={`nav-toggle${menuOpen ? " active" : ""}`}
           aria-label={menuOpen ? "Close menu" : "Open menu"}
@@ -113,6 +119,7 @@ export default function Header() {
           <span />
           <span />
         </button>
+        </div>
       </nav>
 
       <button
@@ -158,6 +165,10 @@ export default function Header() {
               );
             })}
           </ul>
+          <div className="nav-mobile-theme">
+            <span className="nav-mobile-theme-label">Appearance</span>
+            <ThemeToggle />
+          </div>
         </div>
       </div>
     </header>
