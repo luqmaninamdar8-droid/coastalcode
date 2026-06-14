@@ -608,7 +608,44 @@
   height: auto;
   aspect-ratio: 3 / 2;
   object-fit: cover;
+  object-position: center 35%;
   display: block;
+  transition: transform 0.5s ease;
+}
+
+.home-intro-tech-image:hover .home-intro-tech-img {
+  transform: scale(1.03);
+}
+
+.home-intro-tech-scanline {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(34, 211, 238, 0.08) 50%,
+    transparent 100%
+  );
+  background-size: 100% 200%;
+  animation: tech-scan-sweep 5s linear infinite;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  opacity: 0.6;
+}
+
+.home-intro-tech-caption {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  max-width: calc(100% - 1.5rem);
+  padding: 0.4rem 0.75rem;
+  border-radius: var(--radius-full);
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.95);
+  background: rgba(10, 22, 40, 0.72);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(56, 189, 248, 0.25);
 }
 
 .home-intro-tech-badge {

@@ -155,16 +155,21 @@ export default function HomePage() {
             </Link>
           </div>
           <div className="home-intro-card reveal reveal-right">
-            <div className="home-intro-tech-image">
+            <figure className="home-intro-tech-image">
               <Image
-                src="https://images.unsplash.com/photo-1517694712202-14dd95375aa0?auto=format&fit=crop&w=600&q=80"
+                src="/assets/images/laptop-code.jpg"
                 alt="Laptop showing web development code"
-                width={600}
-                height={400}
+                width={900}
+                height={600}
                 className="home-intro-tech-img"
+                priority
               />
+              <span className="home-intro-tech-scanline" aria-hidden="true" />
+              <figcaption className="home-intro-tech-caption">
+                Laptop showing web development code
+              </figcaption>
               <span className="home-intro-tech-badge">Next.js · React · TypeScript</span>
-            </div>
+            </figure>
             <div className="highlight-list">
               <div className="highlight-item">
                 <span className="highlight-icon">🌴</span>
