@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useRef, useState } from "react";
 import type { WorkCategory } from "@/lib/categories";
 
 interface CategoryVideoCardProps {
@@ -9,44 +9,55 @@ interface CategoryVideoCardProps {
 
 export default function CategoryVideoCard({ category }: CategoryVideoCardProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const [playing, setPlaying] = useState(false);
 
-  useEffect(() => {
+  function playVideo() {
     const video = videoRef.current;
     if (!video) return;
 
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          video.play().catch(() => {});
-        } else {
-          video.pause();
-        }
-      },
-      { threshold: 0.35 }
-    );
+    video.muted = true;
+    void video.play()
+      .then(() => setPlaying(true))
+      .catch(() => setPlaying(false));
+  }
 
-    observer.observe(video);
-    return () => observer.disconnect();
-  }, []);
+  function pauseVideo() {
+    const video = videoRef.current;
+    if (!video) return;
+
+    video.pause();
+    video.currentTime = 0;
+    setPlaying(false);
+  }
+
+  function handleMouseLeave() {
+    if (window.matchMedia("(hover: hover)").matches) {
+      pauseVideo();
+    }
+  }
 
   return (
-    <article className="category-card category-card--video reveal">
+    <article
+      className={`category-card category-card--video reveal${playing ? " is-playing" : ""}`}
+      onMouseEnter={playVideo}
+      onMouseLeave={handleMouseLeave}
+      onTouchStart={playVideo}
+    >
       <video
         ref={videoRef}
         className="category-card-video"
-        autoPlay
+        src={category.video}
         muted
         loop
         playsInline
         preload="metadata"
         aria-hidden="true"
-      >
-        <source src={category.video} type="video/mp4" />
-      </video>
+      />
       <div className="category-card-content">
         <span className="category-count">{category.count}</span>
         <h3>{category.title}</h3>
         <p>{category.text}</p>
+        {!playing && <span className="category-card-hint">Hover to play video</span>}
       </div>
     </article>
   );
