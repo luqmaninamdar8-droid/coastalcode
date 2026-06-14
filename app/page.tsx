@@ -4,6 +4,8 @@ import type { Metadata } from "next";
 import ClientLogos from "@/components/ClientLogos";
 import CtaBanner from "@/components/CtaBanner";
 import JsonLd from "@/components/JsonLd";
+import TechMarquee from "@/components/TechMarquee";
+import TechShowcase from "@/components/TechShowcase";
 import WorkCard from "@/components/WorkCard";
 import { featuredProjects } from "@/lib/projects";
 import { breadcrumbJsonLd, createPageMetadata } from "@/lib/seo";
@@ -25,20 +27,6 @@ export const metadata: Metadata = createPageMetadata({
   ],
 });
 
-const skills = [
-  "HTML5",
-  "CSS3",
-  "JavaScript",
-  "TypeScript",
-  "Next.js",
-  "Responsive Design",
-  "Flexbox & Grid",
-  "Git & GitHub",
-  "Figma",
-  "SEO Basics",
-  "Web Accessibility",
-];
-
 export default function HomePage() {
   return (
     <>
@@ -48,10 +36,9 @@ export default function HomePage() {
       <section className="hero hero--home" id="hero">
         <div className="hero-bg">
           <Image
-            src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?auto=format&fit=crop&w=1600&q=80"
-            alt=""
+            src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1600&q=80"
+            alt="Developer workspace with code on screen"
             className="hero-bg-image"
-            aria-hidden
             width={1600}
             height={900}
             priority
@@ -103,12 +90,12 @@ export default function HomePage() {
         <div className="container hero-content">
           <p className="hero-tag hero-animate">Young Web Creator · Goa, India</p>
           <h1 className="hero-title hero-animate">
-            Websites that feel as good as a <em>Goa sunset</em>
+            Websites powered by <em>modern tech</em>
           </h1>
           <p className="hero-subtitle hero-animate">
             I&apos;m a 13-year-old web creator from Goa building fast, beautiful
-            sites for local businesses, friends, and anyone who needs a great page
-            online.
+            sites with HTML, CSS, JavaScript, and Next.js — for local businesses,
+            friends, and anyone who needs a great page online.
           </p>
           <div className="hero-actions hero-animate">
             <Link href="/contact" className="btn btn-primary btn-glow">
@@ -147,6 +134,8 @@ export default function HomePage() {
 
       <div className="section-wave" aria-hidden="true" />
 
+      <TechMarquee />
+
       <section className="home-intro section">
         <div className="container home-intro-grid">
           <div className="home-intro-content reveal reveal-left">
@@ -166,6 +155,16 @@ export default function HomePage() {
             </Link>
           </div>
           <div className="home-intro-card reveal reveal-right">
+            <div className="home-intro-tech-image">
+              <Image
+                src="https://images.unsplash.com/photo-1517694712202-14dd95375aa0?auto=format&fit=crop&w=600&q=80"
+                alt="Laptop showing web development code"
+                width={600}
+                height={400}
+                className="home-intro-tech-img"
+              />
+              <span className="home-intro-tech-badge">Next.js · React · TypeScript</span>
+            </div>
             <div className="highlight-list">
               <div className="highlight-item">
                 <span className="highlight-icon">🌴</span>
@@ -244,22 +243,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="section skills-section">
-        <div className="container">
-          <div className="section-header reveal reveal-blur">
-            <span className="section-tag">Skills</span>
-            <h2>Tools I work with</h2>
-            <p>My stack is growing every week — these are my go-to technologies right now.</p>
-          </div>
-          <div className="skills-grid reveal">
-            {skills.map((skill) => (
-              <span key={skill} className="skill-badge">
-                {skill}
-              </span>
-            ))}
-          </div>
-        </div>
-      </section>
+      <TechShowcase />
 
       <section className="section process-preview">
         <div className="container">
