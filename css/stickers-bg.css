@@ -334,6 +334,8 @@ main {
   .colorful-bg__blob,
   .colorful-bg__rainbow,
   .colorful-bg__mesh,
+  .colorful-bg__aurora,
+  .colorful-bg__circuit,
   .floating-sticker-inner,
   .floating-sticker-inner--shine::before {
     animation: none;

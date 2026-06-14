@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" fill="none">
+  <defs>
+    <pattern id="circuit" width="200" height="200" patternUnits="userSpaceOnUse">
+      <path
+        d="M20 20h60v40H20V20Zm80 0h40v20h-40V20Zm0 40h60v60h-60V60Zm-80 80h40v40H20v-40Zm120-40h60v20h-60v-20Zm0 40v40h20v-40h-20Z"
+        stroke="#38bdf8"
+        stroke-width="1.5"
+        stroke-opacity="0.35"
+        fill="none"
+      />
+      <circle cx="20" cy="20" r="3" fill="#22d3ee" fill-opacity="0.5" />
+      <circle cx="80" cy="20" r="3" fill="#818cf8" fill-opacity="0.5" />
+      <circle cx="140" cy="60" r="3" fill="#38bdf8" fill-opacity="0.5" />
+      <circle cx="20" cy="140" r="3" fill="#6366f1" fill-opacity="0.45" />
+      <circle cx="180" cy="140" r="3" fill="#22d3ee" fill-opacity="0.45" />
+      <circle cx="180" cy="180" r="3" fill="#a855f7" fill-opacity="0.45" />
+    </pattern>
+  </defs>
+  <rect width="400" height="400" fill="url(#circuit)" />
+</svg>

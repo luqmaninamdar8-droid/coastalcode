@@ -1,0 +1,31 @@
+export const techCodeSnippets = [
+  "const app = create();",
+  "npm run build",
+  "export default Page",
+  "<section />",
+  "use client",
+  "git commit -m",
+  "next/image",
+  "interface Props {",
+  "return <main>",
+  "async function",
+  "tailwindcss",
+  "responsive design",
+  "SEO metadata",
+  "JSON-LD",
+  "TypeScript",
+  "flexbox grid",
+  "hover:scale-105",
+  "prefers-reduced-motion",
+  "generateStaticParams",
+  "aria-label",
+];
+
+export const techBinaryColumns = [
+  "10110101 01101001",
+  "01001110 01000101",
+  "01010100 00101100",
+  "11001010 10110010",
+  "00110101 10010110",
+  "01110011 00101100",
+];

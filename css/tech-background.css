@@ -1,0 +1,246 @@
+/* ── Technology background layers ── */
+
+.colorful-bg__aurora {
+  position: absolute;
+  inset: -20%;
+  background:
+    radial-gradient(ellipse 50% 40% at 15% 20%, rgba(34, 211, 238, 0.14), transparent 60%),
+    radial-gradient(ellipse 45% 35% at 85% 15%, rgba(99, 102, 241, 0.12), transparent 55%),
+    radial-gradient(ellipse 40% 30% at 70% 85%, rgba(168, 85, 247, 0.1), transparent 50%),
+    radial-gradient(ellipse 35% 25% at 10% 80%, rgba(14, 165, 233, 0.1), transparent 45%);
+  animation: tech-aurora-shift 24s ease-in-out infinite alternate;
+}
+
+.colorful-bg__circuit {
+  position: absolute;
+  inset: 0;
+  background-repeat: repeat;
+  background-size: 280px 280px;
+  opacity: 0.55;
+  mask-image: radial-gradient(ellipse 90% 80% at 50% 45%, black 20%, transparent 75%);
+  animation: tech-circuit-pan 60s linear infinite;
+}
+
+.colorful-bg__dots {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(
+    rgba(56, 189, 248, 0.18) 1px,
+    transparent 1px
+  );
+  background-size: 24px 24px;
+  opacity: 0.35;
+  mask-image: linear-gradient(to bottom, black 0%, transparent 90%);
+}
+
+.colorful-bg__network {
+  position: absolute;
+  inset: 0;
+  opacity: 0.45;
+}
+
+.colorful-bg__network svg {
+  width: 100%;
+  height: 100%;
+}
+
+.tech-network-lines line {
+  stroke: rgba(56, 189, 248, 0.22);
+  stroke-width: 1;
+  stroke-dasharray: 6 10;
+  animation: tech-line-flow 12s linear infinite;
+}
+
+.tech-network-lines line:nth-child(2n) {
+  stroke: rgba(129, 140, 248, 0.2);
+  animation-duration: 16s;
+  animation-direction: reverse;
+}
+
+.tech-network-nodes circle {
+  fill: rgba(34, 211, 238, 0.55);
+  filter: drop-shadow(0 0 6px rgba(34, 211, 238, 0.6));
+  animation: tech-node-pulse 4s ease-in-out infinite;
+}
+
+.tech-network-nodes circle:nth-child(2n) {
+  fill: rgba(129, 140, 248, 0.55);
+  animation-delay: -1.5s;
+}
+
+.tech-network-nodes circle:nth-child(3n) {
+  fill: rgba(168, 85, 247, 0.5);
+  animation-delay: -2.5s;
+}
+
+.colorful-bg__code-columns {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  mask-image: linear-gradient(
+    to bottom,
+    transparent,
+    black 15%,
+    black 85%,
+    transparent
+  );
+}
+
+.tech-code-line {
+  position: absolute;
+  left: calc(4% + (var(--code-index, 0) * 4.8%));
+  top: -10%;
+  font-family: ui-monospace, "Cascadia Code", "Consolas", monospace;
+  font-size: clamp(0.62rem, 0.9vw, 0.78rem);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  color: rgba(56, 189, 248, 0.14);
+  text-shadow: 0 0 12px rgba(34, 211, 238, 0.08);
+  animation: tech-code-fall 28s linear infinite;
+  animation-delay: calc(var(--code-index, 0) * -1.4s);
+}
+
+.tech-code-line:nth-child(2n) {
+  color: rgba(129, 140, 248, 0.13);
+}
+
+.tech-code-line:nth-child(3n) {
+  color: rgba(34, 211, 238, 0.12);
+  font-size: clamp(0.58rem, 0.85vw, 0.72rem);
+}
+
+.colorful-bg__binary-columns {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.tech-binary-column {
+  position: absolute;
+  right: calc(2% + (var(--binary-index, 0) * 5.5%));
+  top: -20%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  font-family: ui-monospace, monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  color: rgba(99, 102, 241, 0.1);
+  animation: tech-binary-fall 36s linear infinite;
+  animation-delay: calc(var(--binary-index, 0) * -3s);
+}
+
+.tech-binary-column span {
+  display: block;
+}
+
+.colorful-bg__vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 75% 65% at 50% 45%,
+    transparent 40%,
+    rgba(255, 251, 235, 0.35) 100%
+  );
+  pointer-events: none;
+}
+
+.colorful-bg__rainbow {
+  opacity: 0.28;
+}
+
+@keyframes tech-aurora-shift {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  100% {
+    transform: translate(3%, -2%) scale(1.05);
+  }
+}
+
+@keyframes tech-circuit-pan {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 280px 280px;
+  }
+}
+
+@keyframes tech-line-flow {
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: -32;
+  }
+}
+
+@keyframes tech-node-pulse {
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes tech-code-fall {
+  from {
+    transform: translateY(-10%);
+  }
+  to {
+    transform: translateY(115vh);
+  }
+}
+
+@keyframes tech-binary-fall {
+  from {
+    transform: translateY(-15%);
+  }
+  to {
+    transform: translateY(120vh);
+  }
+}
+
+@media (max-width: 768px) {
+  .colorful-bg__circuit {
+    background-size: 220px 220px;
+    opacity: 0.35;
+  }
+
+  .colorful-bg__network {
+    opacity: 0.25;
+  }
+
+  .tech-code-line:nth-child(n + 12) {
+    display: none;
+  }
+
+  .tech-binary-column:nth-child(n + 4) {
+    display: none;
+  }
+
+  .colorful-bg__binary-columns {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .colorful-bg__aurora,
+  .colorful-bg__circuit,
+  .tech-network-lines line,
+  .tech-network-nodes circle,
+  .tech-code-line,
+  .tech-binary-column {
+    animation: none !important;
+  }
+
+  .tech-code-line,
+  .tech-binary-column {
+    display: none;
+  }
+}
