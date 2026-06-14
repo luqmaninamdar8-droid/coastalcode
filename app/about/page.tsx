@@ -12,11 +12,7 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <>
-      <PageHero
-        tag="My Story"
-        title="Hi, I'm Luqman Inamdar"
-        subtitle="A 13-year-old web creator from Goa — my coding journey from first webpage to this portfolio."
-      />
+      <PageHero pageKey="about" />
 
       <section className="about-facts section">
         <div className="container">
@@ -224,12 +220,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <CtaBanner
-        title="Want to say hi?"
-        description="I'd love to hear about your project or just connect with other young coders."
-        buttonLabel="Get in Touch"
-        href="/contact"
-      />
+      <CtaBanner ctaKey="about" href="/contact" />
     </>
   );
 }

@@ -1,25 +1,25 @@
+"use client";
+
 import Link from "next/link";
+import { useLanguage } from "@/components/LanguageProvider";
+import type { CtaKey } from "@/lib/i18n";
 
 interface CtaBannerProps {
-  title: string;
-  description: string;
-  buttonLabel: string;
+  ctaKey: CtaKey;
   href: string;
 }
 
-export default function CtaBanner({
-  title,
-  description,
-  buttonLabel,
-  href,
-}: CtaBannerProps) {
+export default function CtaBanner({ ctaKey, href }: CtaBannerProps) {
+  const { t } = useLanguage();
+  const cta = t.cta[ctaKey];
+
   return (
     <section className="cta-banner section">
       <div className="container cta-banner-inner reveal">
-        <h2>{title}</h2>
-        <p>{description}</p>
+        <h2>{cta.title}</h2>
+        <p>{cta.description}</p>
         <Link href={href} className="btn btn-primary">
-          {buttonLabel}
+          {cta.button}
         </Link>
       </div>
     </section>

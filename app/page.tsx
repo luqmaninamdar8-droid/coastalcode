@@ -2,6 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import ClientLogos from "@/components/ClientLogos";
 import CtaBanner from "@/components/CtaBanner";
+import HomeHeroContent from "@/components/HomeHeroContent";
+import HomeHeroScroll from "@/components/HomeHeroScroll";
 import WorkCard from "@/components/WorkCard";
 import { featuredProjects } from "@/lib/projects";
 
@@ -78,48 +80,9 @@ export default function HomePage() {
           </div>
         </div>
         <div className="container hero-content">
-          <p className="hero-tag hero-animate">Young Web Creator · Goa, India</p>
-          <h1 className="hero-title hero-animate">
-            Websites that feel as good as a <em>Goa sunset</em>
-          </h1>
-          <p className="hero-subtitle hero-animate">
-            I&apos;m a 13-year-old web creator from Goa building fast, beautiful
-            sites for local businesses, friends, and anyone who needs a great page
-            online.
-          </p>
-          <div className="hero-actions hero-animate">
-            <Link href="/contact" className="btn btn-primary btn-glow">
-              Start Your Project
-            </Link>
-            <Link href="/work" className="btn btn-secondary">
-              View My Work
-            </Link>
-          </div>
-          <div className="hero-stats hero-animate">
-            <div className="stat">
-              <span className="stat-number" data-count="10" data-suffix="+">
-                0
-              </span>
-              <span className="stat-label">Projects Built</span>
-            </div>
-            <div className="stat">
-              <span className="stat-number" data-count="3">
-                0
-              </span>
-              <span className="stat-label">Languages Learned</span>
-            </div>
-            <div className="stat">
-              <span className="stat-number" data-count="13">
-                0
-              </span>
-              <span className="stat-label">Years Old</span>
-            </div>
-          </div>
+          <HomeHeroContent />
         </div>
-        <div className="hero-scroll">
-          <span>Scroll</span>
-          <div className="scroll-line" />
-        </div>
+        <HomeHeroScroll />
       </section>
 
       <div className="section-wave" aria-hidden="true" />
@@ -298,12 +261,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <CtaBanner
-        title="Ready to launch your website?"
-        description="Tell me about your project — I typically reply within 24 hours."
-        buttonLabel="Get in Touch"
-        href="/contact"
-      />
+      <CtaBanner ctaKey="home" href="/contact" />
     </>
   );
 }

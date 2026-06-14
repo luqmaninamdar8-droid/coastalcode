@@ -50,11 +50,7 @@ const services = [
 export default function ServicesPage() {
   return (
     <>
-      <PageHero
-        tag="What I Offer"
-        title="Everything you need to go live"
-        subtitle="I'm Luqman Inamdar — a young web creator from Goa. From landing pages to full websites, I design, build, and launch sites that actually work."
-      />
+      <PageHero pageKey="services" />
 
       <section className="services section">
         <div className="container">
@@ -187,12 +183,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <CtaBanner
-        title="Not sure which service you need?"
-        description="Message me — I'll help you pick the right package for your project."
-        buttonLabel="Get in Touch"
-        href="/contact"
-      />
+      <CtaBanner ctaKey="services" href="/contact" />
     </>
   );
 }

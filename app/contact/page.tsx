@@ -13,12 +13,7 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <>
-      <PageHero
-        tag="Get in Touch"
-        title="Let's build something together"
-        subtitle="I'm Luqman Inamdar — message me about your project. I typically reply within 24 hours on weekdays."
-        short
-      />
+      <PageHero pageKey="contact" short />
 
       <section className="contact-quick section">
         <div className="container">
@@ -188,12 +183,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <CtaBanner
-        title="Still thinking about it?"
-        description="Send a quick hi — even a one-line message is a great start."
-        buttonLabel="Send a Message"
-        href="/contact#contact-form"
-      />
+      <CtaBanner ctaKey="contact" href="/contact#contact-form" />
     </>
   );
 }
