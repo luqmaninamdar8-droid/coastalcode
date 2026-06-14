@@ -1156,12 +1156,11 @@ textarea {
   height: 100%;
   object-fit: cover;
   z-index: 0;
-  opacity: 0.35;
-  transition: opacity 0.45s ease, transform 0.45s ease;
+  opacity: 1;
+  transition: transform 0.45s ease;
 }
 
 .category-card--video.is-playing .category-card-video {
-  opacity: 1;
   transform: scale(1.03);
 }
 
@@ -1171,9 +1170,9 @@ textarea {
   inset: 0;
   background: linear-gradient(
     to top,
-    rgba(12, 74, 110, 0.92) 0%,
-    rgba(12, 74, 110, 0.55) 55%,
-    rgba(12, 74, 110, 0.3) 100%
+    rgba(12, 74, 110, 0.88) 0%,
+    rgba(12, 74, 110, 0.4) 50%,
+    rgba(12, 74, 110, 0.15) 100%
   );
   z-index: 1;
   transition: opacity var(--transition);
@@ -1181,7 +1180,7 @@ textarea {
 
 .category-card--video:hover::after,
 .category-card--video.is-playing::after {
-  opacity: 0.72;
+  opacity: 0.55;
 }
 
 .category-card-content {
@@ -3141,10 +3140,6 @@ body {
 
   .hero--home .hero-bg-image {
     animation: none;
-  }
-
-  .category-card-video {
-    display: none;
   }
 }
 

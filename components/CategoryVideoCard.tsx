@@ -50,7 +50,7 @@ export default function CategoryVideoCard({ category }: CategoryVideoCardProps) 
         muted
         loop
         playsInline
-        preload="metadata"
+        preload="auto"
         aria-hidden="true"
       />
       <div className="category-card-content">
