@@ -16,7 +16,11 @@ export const metadata: Metadata = {
 export default function WorkPage() {
   return (
     <>
-      <PageHero pageKey="work" />
+      <PageHero
+        tag="My Portfolio"
+        title="Projects I'm proud of"
+        subtitle="I'm Luqman Inamdar — here's a collection of websites I've designed and built from Goa, using HTML, CSS, JavaScript and Next.js."
+      />
 
       <section className="work-stats section">
         <div className="container">
@@ -121,7 +125,12 @@ export default function WorkPage() {
         </div>
       </section>
 
-      <CtaBanner ctaKey="work" href="/contact" />
+      <CtaBanner
+        title="Want a website like these?"
+        description="Tell me about your idea — I'd love to add your project to this portfolio."
+        buttonLabel="Start Your Project"
+        href="/contact"
+      />
     </>
   );
 }

@@ -4,8 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import LanguageToggle from "@/components/LanguageToggle";
-import { useLanguage } from "@/components/LanguageProvider";
 import { navItems, type NavPage } from "@/lib/nav";
 
 function getActivePage(pathname: string): NavPage {
@@ -24,14 +22,6 @@ export default function Header() {
   const isHome = activePage === "home";
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(!isHome);
-  const { t } = useLanguage();
-
-  const navLabels = {
-    services: t.nav.services,
-    work: t.nav.work,
-    about: t.nav.about,
-    contact: t.nav.contact,
-  };
 
   useEffect(() => {
     setMenuOpen(false);
@@ -65,20 +55,17 @@ export default function Header() {
           />
           Coastal Code
         </Link>
-        <div className="nav-actions">
-          <LanguageToggle />
-          <button
-            type="button"
-            className={`nav-toggle${menuOpen ? " active" : ""}`}
-            aria-label="Toggle menu"
-            aria-expanded={menuOpen}
-            onClick={() => setMenuOpen((open) => !open)}
-          >
-            <span />
-            <span />
-            <span />
-          </button>
-        </div>
+        <button
+          type="button"
+          className={`nav-toggle${menuOpen ? " active" : ""}`}
+          aria-label="Toggle menu"
+          aria-expanded={menuOpen}
+          onClick={() => setMenuOpen((open) => !open)}
+        >
+          <span />
+          <span />
+          <span />
+        </button>
         <ul className={`nav-links${menuOpen ? " open" : ""}`}>
           {navItems.map((item) => {
             const isActive = item.key === activePage;
@@ -97,7 +84,7 @@ export default function Header() {
                   aria-current={isActive ? "page" : undefined}
                   onClick={() => setMenuOpen(false)}
                 >
-                  {navLabels[item.key]}
+                  {item.label}
                 </Link>
               </li>
             );

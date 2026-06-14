@@ -6,7 +6,6 @@ import FaqChatbot from "@/components/FaqChatbot";
 import FloatingStickers from "@/components/FloatingStickers";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
-import Providers from "@/components/Providers";
 import ScrollToTopButton from "@/components/ScrollToTopButton";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import "./globals.css";
@@ -40,17 +39,15 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${dmSans.variable} ${fraunces.variable}`}>
       <body>
-        <Providers>
-          <ColorfulBackground />
-          <FloatingStickers />
-          <Header />
-          <main>{children}</main>
-          <Footer />
-          <FaqChatbot />
-          <ScrollToTopButton />
-          <WhatsAppButton />
-          <ClientEffects />
-        </Providers>
+        <ColorfulBackground />
+        <FloatingStickers />
+        <Header />
+        <main>{children}</main>
+        <Footer />
+        <FaqChatbot />
+        <ScrollToTopButton />
+        <WhatsAppButton />
+        <ClientEffects />
       </body>
     </html>
   );
