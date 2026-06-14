@@ -18,8 +18,9 @@ export default function Footer() {
         </Link>
         <p className="footer-tagline">{siteConfig.tagline}</p>
         <div className="footer-links">
-          <Link href="/services">Services</Link>
+          <Link href="/">Home</Link>
           <Link href="/work">Work</Link>
+          <Link href="/services">Services</Link>
           <Link href="/about">About</Link>
           <Link href="/contact">Contact</Link>
         </div>
