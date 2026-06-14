@@ -90,6 +90,24 @@ export default function ClientEffects() {
       );
     }
 
+    /* ── Tech background mouse parallax ── */
+    const colorfulBg = document.querySelector<HTMLElement>(".colorful-bg");
+
+    const onBgParallax = (event: MouseEvent) => {
+      if (!colorfulBg) return;
+      const x = (event.clientX / window.innerWidth - 0.5) * 30;
+      const y = (event.clientY / window.innerHeight - 0.5) * 30;
+      colorfulBg.style.setProperty("--mouse-x", `${x}px`);
+      colorfulBg.style.setProperty("--mouse-y", `${y}px`);
+    };
+
+    if (colorfulBg && !prefersReducedMotion) {
+      window.addEventListener("mousemove", onBgParallax, { passive: true });
+      cleanups.push(() =>
+        window.removeEventListener("mousemove", onBgParallax)
+      );
+    }
+
     /* ── Tech visual stack scroll parallax ── */
     const techVisuals = document.querySelectorAll<HTMLElement>(".tech-visual-card");
 
