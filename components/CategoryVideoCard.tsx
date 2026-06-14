@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import type { WorkCategory } from "@/lib/categories";
 
 interface CategoryVideoCardProps {
@@ -9,24 +9,17 @@ interface CategoryVideoCardProps {
 
 export default function CategoryVideoCard({ category }: CategoryVideoCardProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [playing, setPlaying] = useState(false);
 
   function playVideo() {
     const video = videoRef.current;
     if (!video) return;
 
     video.muted = true;
-    void video.play()
-      .then(() => setPlaying(true))
-      .catch(() => setPlaying(false));
+    void video.play().catch(() => {});
   }
 
   function pauseVideo() {
-    const video = videoRef.current;
-    if (!video) return;
-
-    video.pause();
-    setPlaying(false);
+    videoRef.current?.pause();
   }
 
   function handleMouseLeave() {
@@ -37,7 +30,7 @@ export default function CategoryVideoCard({ category }: CategoryVideoCardProps) 
 
   return (
     <article
-      className={`category-card category-card--video reveal${playing ? " is-playing" : ""}`}
+      className="category-card category-card--video reveal"
       onMouseEnter={playVideo}
       onMouseLeave={handleMouseLeave}
       onTouchStart={playVideo}
@@ -56,7 +49,7 @@ export default function CategoryVideoCard({ category }: CategoryVideoCardProps) 
         <span className="category-count">{category.count}</span>
         <h3>{category.title}</h3>
         <p>{category.text}</p>
-        {!playing && <span className="category-card-hint">Hover to play video</span>}
+        <span className="category-card-hint">Hover to play video</span>
       </div>
     </article>
   );

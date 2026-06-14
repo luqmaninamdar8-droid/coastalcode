@@ -1156,28 +1156,19 @@ textarea {
   height: 100%;
   object-fit: cover;
   z-index: 0;
-  opacity: 1;
-}
-
-.category-card--video::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to top,
-    rgba(12, 74, 110, 0.9) 0%,
-    rgba(12, 74, 110, 0.45) 38%,
-    transparent 72%
-  );
-  z-index: 1;
-  pointer-events: none;
 }
 
 .category-card-content {
   position: relative;
-  z-index: 2;
+  z-index: 1;
   padding: 1.75rem;
   width: 100%;
+  background: linear-gradient(
+    to top,
+    rgba(12, 74, 110, 0.82) 0%,
+    rgba(12, 74, 110, 0.35) 55%,
+    transparent 100%
+  );
 }
 
 .category-card-hint {
@@ -1187,11 +1178,14 @@ textarea {
   font-weight: 600;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.75);
+  color: rgba(255, 255, 255, 0.85);
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.35);
 }
 
-.category-card--video.is-playing .category-card-hint {
-  opacity: 0.65;
+.category-card--video .category-count,
+.category-card--video h3,
+.category-card--video p {
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.4);
 }
 
 .category-card--video .category-count {
