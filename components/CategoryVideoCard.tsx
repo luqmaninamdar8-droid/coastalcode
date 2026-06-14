@@ -26,7 +26,6 @@ export default function CategoryVideoCard({ category }: CategoryVideoCardProps) 
     if (!video) return;
 
     video.pause();
-    video.currentTime = 0;
     setPlaying(false);
   }
 
