@@ -3,49 +3,50 @@ export interface Client {
   slug: string;
   category: string;
   logo: string;
+  url: string;
 }
 
 export const clients: Client[] = [
   {
-    name: "Azure Bay Resort",
-    slug: "azure-bay-resort",
-    category: "Hospitality",
-    logo: "/clients/azure-bay.svg",
+    name: "GoaTaxico",
+    slug: "goataxi",
+    category: "Taxi Service",
+    logo: "/clients/goataxi.svg",
+    url: "https://goataxi.co/",
   },
   {
-    name: "Susegado Kitchen",
-    slug: "susegado-kitchen",
-    category: "Restaurant",
-    logo: "/clients/susegado.svg",
+    name: "Phoenix Cloud Technologies",
+    slug: "phoenix-cloud",
+    category: "Enterprise Cloud",
+    logo: "/clients/phoenix-cloud.svg",
+    url: "https://swami-theta.vercel.app/",
   },
   {
-    name: "Tide & Thread",
-    slug: "tide-and-thread",
-    category: "E-Commerce",
-    logo: "/clients/tide-and-thread.svg",
+    name: "Goencar Taxi",
+    slug: "goencar",
+    category: "Taxi App",
+    logo: "/clients/goencar.svg",
+    url: "https://goencar.in/",
   },
   {
-    name: "Casa Branca Homestay",
-    slug: "casa-branca-homestay",
-    category: "Hospitality",
-    logo: "/clients/casa-branca.svg",
+    name: "Sweet Bites by Muskan",
+    slug: "sweetbites",
+    category: "Custom Cakes",
+    logo: "/clients/sweetbites.svg",
+    url: "https://sweetbites.me/",
   },
   {
-    name: "Mapusa Market Co-op",
-    slug: "mapusa-market",
-    category: "Local Business",
-    logo: "/clients/mapusa-market.svg",
+    name: "Blissful Spa & Wellness",
+    slug: "blissfulspa",
+    category: "Wellness & Spa",
+    logo: "/clients/blissfulspa.svg",
+    url: "https://blissfulspa.co.in/",
   },
   {
-    name: "Monsoon Labs",
-    slug: "monsoon-labs",
-    category: "Startup",
-    logo: "/clients/monsoon-labs.svg",
-  },
-  {
-    name: "Bloom Beauty Studio",
-    slug: "bloom-beauty-studio",
-    category: "Beauty",
-    logo: "/clients/bloom-beauty.svg",
+    name: "Aarav Cabs",
+    slug: "aaravcabs",
+    category: "Taxi Service",
+    logo: "/clients/aaravcabs.svg",
+    url: "https://aaravcabs.in/",
   },
 ];

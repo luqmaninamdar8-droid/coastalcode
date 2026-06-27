@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+import { siteConfig } from "@/lib/seo";
 
 export default function ContactForm() {
   const [noteVisible, setNoteVisible] = useState(false);
@@ -28,7 +29,7 @@ export default function ContactForm() {
           <label htmlFor="phone">
             Phone <span className="optional">(optional)</span>
           </label>
-          <input type="tel" id="phone" name="phone" placeholder="+91 98765 43210" />
+          <input type="tel" id="phone" name="phone" placeholder={siteConfig.phoneDisplay} />
         </div>
       </div>
       <div className="form-group">

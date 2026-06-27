@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
-import { DM_Sans, Fraunces } from "next/font/google";
-import ClientEffects from "@/components/ClientEffects";
-import ColorfulBackground from "@/components/ColorfulBackground";
-import FaqChatbot from "@/components/FaqChatbot";
-import FloatingStickers from "@/components/FloatingStickers";
-import Footer from "@/components/Footer";
-import Header from "@/components/Header";
+import { GeistSans } from "geist/font/sans";
+import { GeistMono } from "geist/font/mono";
+import CustomCursor from "@/components/animations/CustomCursor";
+import PageTransition from "@/components/animations/PageTransition";
+import ScrollProgress from "@/components/animations/ScrollProgress";
+import TechBackground from "@/components/animations/tech-background/TechBackground";
+import SiteFooter from "@/components/layout/SiteFooter";
+import SiteHeader from "@/components/layout/SiteHeader";
 import JsonLd from "@/components/JsonLd";
 import ThemeScript from "@/components/ThemeScript";
-import ScrollToTopButton from "@/components/ScrollToTopButton";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import {
   defaultDescription,
@@ -19,27 +19,22 @@ import {
 } from "@/lib/seo";
 import "./globals.css";
 
-const dmSans = DM_Sans({
-  subsets: ["latin"],
-  variable: "--font-body",
-  display: "swap",
-});
-
-const fraunces = Fraunces({
-  subsets: ["latin"],
-  variable: "--font-display",
-  display: "swap",
-});
-
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
     default:
-      "Coastal Code | Web Design & Website Development in Goa, India",
+      "Luqman Inamdar | 13-Year-Old Web Creator from Goa | Coastal Code",
     template: `%s | ${siteConfig.name}`,
   },
   description: defaultDescription,
-  keywords: siteConfig.keywords,
+  keywords: [
+    ...siteConfig.keywords,
+    "13-year-old web creator from Goa",
+    "young developer",
+    "HTML, CSS, JavaScript",
+    "Goa portfolio",
+    "teen web designer India",
+  ],
   authors: [{ name: siteConfig.author, url: siteConfig.url }],
   creator: siteConfig.author,
   publisher: siteConfig.name,
@@ -50,22 +45,22 @@ export const metadata: Metadata = {
     locale: siteConfig.locale,
     url: siteConfig.url,
     siteName: siteConfig.name,
-    title: "Coastal Code | Web Design & Website Development in Goa, India",
+    title: "13-Year-Old Web Creator from Goa | Coastal Code",
     description: defaultDescription,
     images: [
       {
-        url: siteConfig.ogImage,
+        url: "/images/goa-beach-sunset.jpg",
         width: 1200,
         height: 630,
-        alt: "Coastal Code — web design and development in Goa",
+        alt: "Coastal Code — young web creator portfolio from Goa, India",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Coastal Code | Web Design in Goa",
+    title: "Young Web Creator from Goa | Coastal Code",
     description: defaultDescription,
-    images: [siteConfig.ogImage],
+    images: ["/images/goa-beach-sunset.jpg"],
   },
   robots: {
     index: true,
@@ -87,23 +82,23 @@ export default function RootLayout({
   return (
     <html
       lang="en-IN"
-      className={`${dmSans.variable} ${fraunces.variable}`}
+      className={`${GeistSans.variable} ${GeistMono.variable}`}
+      data-theme="dark"
+      data-scroll-behavior="smooth"
       suppressHydrationWarning
     >
-      <body>
+      <body className="relative min-h-screen font-sans">
         <ThemeScript />
-        <JsonLd
-          data={[organizationJsonLd(), personJsonLd(), websiteJsonLd()]}
-        />
-        <ColorfulBackground />
-        <FloatingStickers />
-        <Header />
-        <main>{children}</main>
-        <Footer />
-        <FaqChatbot />
-        <ScrollToTopButton />
+        <TechBackground />
+        <div className="relative z-10">
+        <JsonLd data={[organizationJsonLd(), personJsonLd(), websiteJsonLd()]} />
+        <ScrollProgress />
+        <CustomCursor />
+        <SiteHeader />
+        <PageTransition>{children}</PageTransition>
+        <SiteFooter />
         <WhatsAppButton />
-        <ClientEffects />
+        </div>
       </body>
     </html>
   );

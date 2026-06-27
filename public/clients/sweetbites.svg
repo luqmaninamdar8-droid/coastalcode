@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 56" fill="none">
+  <circle cx="28" cy="28" r="22" fill="#F472B6"/>
+  <path d="M16 34c4-10 20-10 24 0" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <circle cx="22" cy="24" r="2" fill="#FDE68A"/>
+  <circle cx="34" cy="24" r="2" fill="#FDE68A"/>
+  <text x="58" y="24" font-family="Georgia, serif" font-size="14" font-weight="700" fill="#831843">Sweet Bites</text>
+  <text x="58" y="40" font-family="system-ui, sans-serif" font-size="10" font-weight="600" fill="#BE185D">by Muskan</text>
+</svg>

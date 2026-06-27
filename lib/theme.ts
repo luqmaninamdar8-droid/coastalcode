@@ -16,11 +16,11 @@ export function getStoredTheme(): Theme | null {
 }
 
 export function resolveTheme(stored: Theme | null): Theme {
-  return stored ?? getSystemTheme();
+  return stored ?? "dark";
 }
 
 export function applyTheme(theme: Theme) {
   document.documentElement.dataset.theme = theme;
 }
 
-export const themeInitScript = `(function(){try{var k='${THEME_STORAGE_KEY}';var s=localStorage.getItem(k);var d=s==='dark'||(s!=='light'&&window.matchMedia('(prefers-color-scheme: dark)').matches);document.documentElement.dataset.theme=d?'dark':'light';}catch(e){}})();`;
+export const themeInitScript = `(function(){try{var k='${THEME_STORAGE_KEY}';var s=localStorage.getItem(k);var d=s?s==='dark':true;if(s==='light')d=false;document.documentElement.dataset.theme=d?'dark':'light';}catch(e){document.documentElement.dataset.theme='dark';}})();`;

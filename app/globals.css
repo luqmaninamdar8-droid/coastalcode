@@ -1,33 +1,81 @@
-@import "../css/style.css";
-@import "../css/project.css";
-@import "../css/enhancements.css";
-@import "../css/gradients.css";
-@import "../css/motion.css";
-@import "../css/stickers-bg.css";
-@import "../css/clients.css";
-@import "../css/chat-widgets.css";
-@import "../css/skeleton.css";
-@import "../css/seo.css";
-@import "../css/tech-theme.css";
-@import "../css/tech-background.css";
-@import "../css/dark-mode.css";
+@import "tailwindcss";
 
-/* Next.js Image wrappers */
-.work-image img,
-.project-hero-image img,
-.about-profile-image img,
-.contact-location-image img {
-  width: 100%;
-  height: auto;
-  display: block;
+@theme {
+  --color-sunset: #f59e0b;
+  --color-sunset-light: #fbbf24;
+  --color-sunset-dark: #d97706;
+  --color-ocean: #0f172a;
+  --color-ocean-light: #1e293b;
+  --color-ocean-deep: #020617;
+  --color-sand: #fdf6e3;
+  --color-sand-muted: #f5e6c8;
+  --color-sand-dark: #e8d5a8;
+  --color-tech-base: #0a0e1a;
+  --color-tech-cyan: #00d4ff;
+  --color-tech-purple: #8b5cf6;
+  --color-tech-green: #10b981;
+
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+  --shadow-glow-sunset: 0 0 40px rgba(245, 158, 11, 0.35);
+  --shadow-glow-ocean: 0 0 50px rgba(14, 165, 233, 0.2);
+  --shadow-glow-cyan: 0 0 40px rgba(0, 212, 255, 0.25);
 }
 
-.project-hero-image img {
-  aspect-ratio: 21 / 9;
-  object-fit: cover;
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
+
+  body {
+    @apply text-sand antialiased overflow-x-hidden;
+    background-color: #0a0f1a;
+  }
+
+  html[data-theme="light"] body {
+    @apply bg-sand text-ocean;
+    background-image:
+      radial-gradient(ellipse 80% 50% at 20% -10%, rgba(245, 158, 11, 0.12), transparent 50%),
+      radial-gradient(ellipse 60% 40% at 90% 20%, rgba(14, 165, 233, 0.08), transparent 45%);
+  }
+
+  ::selection {
+    @apply bg-sunset/30 text-sand;
+  }
 }
 
-.work-image img {
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
+@layer utilities {
+  .text-gradient-sunset {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, #fbbf24 0%, #f59e0b 40%, #0ea5e9 100%);
+  }
+
+  .bg-gradient-sunset {
+    background-image: linear-gradient(
+      135deg,
+      #0f172a 0%,
+      #1e293b 35%,
+      rgba(245, 158, 11, 0.15) 70%,
+      rgba(251, 191, 36, 0.1) 100%
+    );
+  }
+
+  .glass-panel {
+    @apply border border-white/15 bg-white/[0.03] backdrop-blur-sm;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

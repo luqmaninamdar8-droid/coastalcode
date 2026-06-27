@@ -9,8 +9,8 @@ interface ClientLogosProps {
 }
 
 export default function ClientLogos({
-  title = "Businesses I've worked with",
-  subtitle = "Local resorts, cafés, shops, and startups across Goa — real projects, real results.",
+  title = "Real clients, live websites",
+  subtitle = "Sites I've built or worked on — tap a logo to visit the live project.",
   compact = false,
 }: ClientLogosProps) {
   const track = [...clients, ...clients];
@@ -32,14 +32,16 @@ export default function ClientLogos({
           {track.map((client, i) => (
             <Link
               key={`${client.slug}-${i}`}
-              href={`/projects/${client.slug}`}
+              href={client.url}
+              target="_blank"
+              rel="noopener noreferrer"
               className="client-logo-card motion-card"
               title={`${client.name} — ${client.category}`}
             >
               <Image
                 src={client.logo}
                 alt={`${client.name} logo`}
-                width={200}
+                width={240}
                 height={56}
                 className="client-logo-img"
               />

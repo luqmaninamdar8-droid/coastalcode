@@ -1,5 +1,5 @@
-import PageSkeleton from "@/components/PageSkeleton";
+import Preloader from "@/components/animations/Preloader";
 
 export default function Loading() {
-  return <PageSkeleton />;
+  return <Preloader />;
 }

@@ -1,0 +1,287 @@
+/* ── Enhanced motion layer (enterprise + scroll) ── */
+
+@keyframes motion-rise {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes motion-slide-right {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes motion-scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes motion-shimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes motion-bg-drift {
+  0%,
+  100% {
+    transform: scale(1) translate(0, 0);
+  }
+  50% {
+    transform: scale(1.04) translate(-1.5%, -1%);
+  }
+}
+
+@keyframes motion-label-in {
+  from {
+    opacity: 0;
+    transform: translateX(-14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes motion-scan {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+@keyframes motion-float-soft {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes motion-border-glow {
+  0%,
+  100% {
+    border-color: var(--enterprise-border, rgba(255, 255, 255, 0.08));
+    box-shadow: 0 0 0 rgba(249, 115, 22, 0);
+  }
+  50% {
+    border-color: rgba(249, 115, 22, 0.35);
+    box-shadow: 0 0 24px rgba(249, 115, 22, 0.12);
+  }
+}
+
+/* Hero ambient background */
+.hero-enterprise-bg {
+  animation: motion-bg-drift 18s ease-in-out infinite;
+}
+
+.hero.is-loaded .hero-title-accent {
+  background-size: 200% auto;
+  animation: motion-shimmer 6s ease-in-out infinite;
+}
+
+/* Dashboard panel — staggered metrics on reveal */
+.hero-dashboard.visible .hero-dashboard-card {
+  opacity: 0;
+  animation: motion-scale-in 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.hero-dashboard.visible .hero-dashboard-grid .hero-dashboard-card:nth-child(1) {
+  animation-delay: 0.12s;
+}
+
+.hero-dashboard.visible .hero-dashboard-grid .hero-dashboard-card:nth-child(2) {
+  animation-delay: 0.22s;
+}
+
+.hero-dashboard.visible .hero-dashboard-grid .hero-dashboard-card:nth-child(3) {
+  animation-delay: 0.32s;
+}
+
+.hero-dashboard.visible .hero-dashboard-grid .hero-dashboard-card:nth-child(4) {
+  animation-delay: 0.42s;
+}
+
+.hero-dashboard.visible .hero-dashboard-row {
+  opacity: 0;
+  animation: motion-rise 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.hero-dashboard.visible .hero-dashboard-row:nth-child(1) {
+  animation-delay: 0.5s;
+}
+
+.hero-dashboard.visible .hero-dashboard-row:nth-child(2) {
+  animation-delay: 0.62s;
+}
+
+.hero-dashboard.visible .hero-dashboard-card--highlight {
+  animation-name: motion-scale-in, motion-border-glow;
+  animation-duration: 0.55s, 3s;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1), ease-in-out;
+  animation-fill-mode: forwards, none;
+  animation-iteration-count: 1, infinite;
+  animation-delay: 0.12s, 1s;
+}
+
+/* Deliver stats — pop in after hero copy */
+.hero.is-loaded .hero-deliver-stat {
+  opacity: 0;
+  animation: motion-rise 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.hero.is-loaded .hero-deliver-stat:nth-child(1) {
+  animation-delay: 0.44s;
+}
+
+.hero.is-loaded .hero-deliver-stat:nth-child(2) {
+  animation-delay: 0.54s;
+}
+
+.hero.is-loaded .hero-deliver-stat:nth-child(3) {
+  animation-delay: 0.64s;
+}
+
+/* Section labels */
+.section-header.visible .enterprise-section-label,
+.section-header.visible .section-tag {
+  animation: motion-label-in 0.65s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Home intro card */
+.home-intro-card.visible .home-intro-tech-image {
+  animation: motion-float-soft 5s ease-in-out infinite;
+  animation-delay: 0.8s;
+}
+
+.home-intro-card.visible .home-intro-tech-scanline {
+  animation: motion-scan 4s linear infinite;
+}
+
+.home-intro-card.visible .highlight-item {
+  opacity: 0;
+  animation: motion-rise 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.home-intro-card.visible .highlight-list .highlight-item:nth-child(1) {
+  animation-delay: 0.15s;
+}
+
+.home-intro-card.visible .highlight-list .highlight-item:nth-child(2) {
+  animation-delay: 0.28s;
+}
+
+.home-intro-card.visible .highlight-list .highlight-item:nth-child(3) {
+  animation-delay: 0.41s;
+}
+
+/* Cards — icon pop on reveal */
+.preview-card.visible .preview-icon,
+.teaser-card.visible .teaser-icon {
+  display: inline-block;
+  animation: motion-scale-in 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* Page hero underline — trigger on title visible */
+.page-hero-title.visible::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 3px;
+  margin: 1rem auto 0;
+  border-radius: var(--radius-full);
+  background: var(--gradient-sunset);
+  animation: line-grow 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  transform-origin: center;
+}
+
+.page-hero-tech-ring--1 {
+  animation: motion-float-soft 7s ease-in-out infinite;
+}
+
+.page-hero-tech-ring--2 {
+  animation: motion-float-soft 9s ease-in-out infinite reverse;
+}
+
+/* Buttons — subtle lift (not nav CTA) */
+.btn:not(.nav-cta) {
+  transition:
+    transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.28s ease,
+    background 0.28s ease,
+    color 0.28s ease,
+    border-color 0.28s ease;
+}
+
+.btn:not(.nav-cta):hover {
+  transform: translateY(-2px);
+}
+
+.btn:not(.nav-cta):active {
+  transform: translateY(0);
+}
+
+/* Client marquee — gentle scale on hover */
+.client-logo-card.motion-card:hover {
+  transform: perspective(900px) rotateY(0) rotateX(0) translateY(-4px) scale(1.03);
+}
+
+/* Quote block */
+.home-quote.visible {
+  animation: motion-rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* CTA banner button pulse when visible */
+.cta-banner-inner.visible .btn-primary {
+  animation: btn-pulse 2.5s ease-in-out infinite;
+  animation-delay: 0.5s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-enterprise-bg,
+  .hero.is-loaded .hero-title-accent,
+  .hero-dashboard.visible .hero-dashboard-card,
+  .hero-dashboard.visible .hero-dashboard-row,
+  .hero.is-loaded .hero-deliver-stat,
+  .home-intro-card.visible .home-intro-tech-image,
+  .home-intro-card.visible .home-intro-tech-scanline,
+  .home-intro-card.visible .highlight-item,
+  .page-hero-tech-ring--1,
+  .page-hero-tech-ring--2,
+  .cta-banner-inner.visible .btn-primary {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .btn:not(.nav-cta):hover {
+    transform: none;
+  }
+}

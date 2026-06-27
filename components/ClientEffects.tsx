@@ -4,10 +4,10 @@ import { usePathname } from "next/navigation";
 import { useEffect } from "react";
 
 const staggerSelectors =
-  ".services-grid, .work-grid, .process-steps, .teaser-grid, .values-grid, .services-preview-grid, .highlight-list, .who-help-grid, .faq-list, .types-grid, .testimonials-grid, .stats-row, .work-stats-grid, .categories-grid, .approach-steps, .about-facts-grid, .timeline-list, .goals-grid, .contact-quick-grid, .contact-steps, .skills-grid, .project-body-grid, .tech-stack-grid";
+  ".services-grid, .work-grid, .process-steps, .teaser-grid, .values-grid, .services-preview-grid, .highlight-list, .who-help-grid, .faq-list, .types-grid, .testimonials-grid, .stats-row, .work-stats-grid, .categories-grid, .approach-steps, .about-facts-grid, .timeline-list, .goals-grid, .contact-quick-grid, .contact-steps, .skills-grid, .project-body-grid, .tech-stack-grid, .hero-deliver-stats, .hero-dashboard-grid, .seo-context-grid";
 
 const motionCardSelector =
-  ".work-card, .preview-card, .teaser-card, .service-card, .who-card, .testimonial-card, .fact-card, .value-card, .goal-card, .category-card, .contact-quick-card, .client-logo-card, .tech-card";
+  ".work-card, .preview-card, .teaser-card, .service-card, .who-card, .testimonial-card, .fact-card, .value-card, .goal-card, .category-card, .contact-quick-card, .client-logo-card, .hero-dashboard-card, .home-intro-card";
 
 export default function ClientEffects() {
   const pathname = usePathname();
@@ -128,6 +128,54 @@ export default function ClientEffects() {
       );
     }
 
+    /* ── Tech marquee cursor spotlight ── */
+    const techMarquee = document.querySelector<HTMLElement>(".tech-marquee");
+
+    const onMarqueeMove = (event: MouseEvent) => {
+      if (!techMarquee) return;
+      const rect = techMarquee.getBoundingClientRect();
+      const x = ((event.clientX - rect.left) / rect.width) * 100;
+      techMarquee.style.setProperty("--marquee-spot-x", `${x}%`);
+    };
+
+    if (techMarquee && !prefersReducedMotion) {
+      techMarquee.addEventListener("mousemove", onMarqueeMove, { passive: true });
+      cleanups.push(() =>
+        techMarquee.removeEventListener("mousemove", onMarqueeMove)
+      );
+    }
+
+    /* ── Tech card magnetic hover ── */
+    const techCards = document.querySelectorAll<HTMLElement>(".tech-card");
+
+    if (techCards.length && !prefersReducedMotion) {
+      techCards.forEach((card) => {
+        const onCardMove = (event: MouseEvent) => {
+          const rect = card.getBoundingClientRect();
+          const x = (event.clientX - rect.left) / rect.width - 0.5;
+          const y = (event.clientY - rect.top) / rect.height - 0.5;
+          card.style.setProperty("--tech-tilt-x", `${x * 12}deg`);
+          card.style.setProperty("--tech-tilt-y", `${y * -12}deg`);
+          card.style.setProperty("--tech-glow-x", `${x * 100}%`);
+          card.style.setProperty("--tech-glow-y", `${y * 100}%`);
+        };
+
+        const onCardLeave = () => {
+          card.style.removeProperty("--tech-tilt-x");
+          card.style.removeProperty("--tech-tilt-y");
+          card.style.removeProperty("--tech-glow-x");
+          card.style.removeProperty("--tech-glow-y");
+        };
+
+        card.addEventListener("mousemove", onCardMove);
+        card.addEventListener("mouseleave", onCardLeave);
+        cleanups.push(() => {
+          card.removeEventListener("mousemove", onCardMove);
+          card.removeEventListener("mouseleave", onCardLeave);
+        });
+      });
+    }
+
     /* ── Scroll reveal ── */
     const revealElements = document.querySelectorAll(".reveal");
     const revealObserver = new IntersectionObserver(
@@ -135,6 +183,12 @@ export default function ClientEffects() {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add("visible");
+
+            const pageHeroContent = entry.target.closest(".page-hero-content");
+            if (pageHeroContent) {
+              pageHeroContent.classList.add("visible");
+            }
+
             revealObserver.unobserve(entry.target);
           }
         });

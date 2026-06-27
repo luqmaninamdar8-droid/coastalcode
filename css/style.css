@@ -1992,15 +1992,50 @@ a.contact-item:hover {
 }
 
 .contact-location-image {
+  position: relative;
   border-radius: var(--radius-lg);
   overflow: hidden;
   box-shadow: var(--shadow-md);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.contact-location-image img {
+.contact-location-image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    transparent 55%,
+    rgba(7, 8, 13, 0.45) 100%
+  );
+  pointer-events: none;
+}
+
+.contact-location-image img,
+.contact-location-photo {
   width: 100%;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 16 / 10;
   object-fit: cover;
+  object-position: center 42%;
+  display: block;
+}
+
+.contact-location-caption {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  right: 1rem;
+  z-index: 1;
+  padding: 0.55rem 1rem;
+  border-radius: var(--radius-full);
+  background: rgba(7, 8, 13, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: var(--color-white);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-align: center;
+  backdrop-filter: blur(8px);
 }
 
 .contact-location-content h2 {

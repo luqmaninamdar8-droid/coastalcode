@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -9,9 +8,8 @@ import ThemeToggle from "@/components/ThemeToggle";
 
 function getActivePage(pathname: string): NavPage {
   if (pathname === "/") return "home";
-  if (pathname.startsWith("/projects")) return "work";
-  if (pathname.startsWith("/services")) return "services";
-  if (pathname.startsWith("/work")) return "work";
+  if (pathname.startsWith("/projects") || pathname.startsWith("/work")) return "projects";
+  if (pathname.startsWith("/skills") || pathname.startsWith("/services")) return "skills";
   if (pathname.startsWith("/about")) return "about";
   if (pathname.startsWith("/contact")) return "contact";
   return "home";
@@ -22,7 +20,12 @@ export default function Header() {
   const activePage = getActivePage(pathname);
   const isHome = activePage === "home";
   const [menuOpen, setMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(!isHome);
+  const [scrolled, setScrolled] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     setMenuOpen(false);
@@ -60,12 +63,13 @@ export default function Header() {
 
   return (
     <header
-      className={`header header-enter${isHome ? " header--home" : ""} ${scrolled ? "scrolled" : ""}`}
+      className={`header header-enter${isHome ? " header--home" : ""}${mounted && scrolled ? " scrolled" : ""}`}
       id="header"
+      suppressHydrationWarning
     >
       <nav className="nav container" aria-label="Main navigation">
-        <Link href="/" className="logo" onClick={closeMenu}>
-          <Image
+        <Link href="/" className="logo" onClick={closeMenu} suppressHydrationWarning>
+          <img
             src="/assets/images/logo.svg"
             alt="Coastal Code — home"
             className="logo-img"
@@ -165,10 +169,6 @@ export default function Header() {
               );
             })}
           </ul>
-          <div className="nav-mobile-theme">
-            <span className="nav-mobile-theme-label">Appearance</span>
-            <ThemeToggle />
-          </div>
         </div>
       </div>
     </header>

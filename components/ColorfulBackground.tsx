@@ -137,8 +137,8 @@ export default function ColorfulBackground() {
             className="tech-binary-column"
             style={{ ["--binary-index" as string]: String(index) }}
           >
-            {column.split(" ").map((chunk) => (
-              <span key={chunk}>{chunk}</span>
+            {column.split(" ").map((chunk, chunkIndex) => (
+              <span key={`${index}-${chunkIndex}`}>{chunk}</span>
             ))}
           </span>
         ))}

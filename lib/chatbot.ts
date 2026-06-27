@@ -1,4 +1,6 @@
-export const WHATSAPP_NUMBER = "919876543210";
+import { siteConfig } from "@/lib/seo";
+
+export const WHATSAPP_NUMBER = siteConfig.whatsappNumber;
 export const WHATSAPP_MESSAGE =
   "Hi Luqman! I found your Coastal Code website and I'd like to discuss a project.";
 export const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
@@ -67,7 +69,7 @@ export const chatFaqs: ChatFaq[] = [
     id: "trust",
     question: "Can I trust a 13-year-old with my website?",
     answer:
-      "Luqman is 13 and has been building websites seriously for over a year. This portfolio shows real client work — resorts, restaurants, shops, and salons across Goa.",
+      "Luqman is 13 and has been building websites seriously for over a year. The Work page lists real live client sites — taxi services, cloud platforms, bakeries, and more.",
     keywords: ["old", "age", "13", "trust", "young", "reliable", "experienced", "kid", "teen"],
   },
   {
@@ -81,7 +83,7 @@ export const chatFaqs: ChatFaq[] = [
     id: "portfolio",
     question: "Can I see examples of your work?",
     answer:
-      "Yes! Check the Work page — 10+ projects including Azure Bay Resort, Susegado Kitchen, Tide & Thread, and Bloom Beauty Studio. Each one is fully custom.",
+      "Yes! Check the Work page — live sites like GoaTaxico, Aarav Cabs, Blissful Spa, Phoenix Cloud, Goencar, and Sweet Bites. Tap any logo to visit the real website.",
     keywords: ["work", "portfolio", "example", "sample", "project", "show", "see", "previous", "clients", "demo"],
   },
   {
@@ -109,8 +111,8 @@ export const chatFaqs: ChatFaq[] = [
     id: "location",
     question: "Do you work outside Goa?",
     answer:
-      "Yes — clients across India are welcome. WhatsApp, email, and video calls work great remotely. In-person meetings are possible in Panaji too.",
-    keywords: ["goa", "panaji", "outside", "remote", "india", "meet", "location", "where", "local", "online"],
+      "Yes — clients across India are welcome. WhatsApp, email, and video calls work great remotely. In-person meetings are possible in Kalay too.",
+    keywords: ["goa", "kalay", "outside", "remote", "india", "meet", "location", "where", "local", "online"],
   },
   {
     id: "revision",
@@ -144,14 +146,14 @@ export const chatFaqs: ChatFaq[] = [
     id: "about",
     question: "Who is Luqman?",
     answer:
-      "Luqman Inamdar is a 13-year-old web creator from Goa. He runs Coastal Code and builds custom websites for resorts, restaurants, shops, salons, and school projects — all hand-coded with modern tools.",
+      "Luqman Inamdar is a 13-year-old web creator from Goa. He runs Coastal Code and builds custom websites for local businesses — all hand-coded with modern tools.",
     keywords: ["luqman", "inamdar", "coastal code", "about", "creator", "developer", "founder", "owner", "boy", "student"],
   },
   {
     id: "contact",
     question: "How can I contact Luqman?",
     answer:
-      "Email hello@coastalcode.goa · WhatsApp +91 98765 43210 · or use the Contact page form. Replies usually within 24 hours on weekdays.",
+      `Email ${siteConfig.email} · WhatsApp ${siteConfig.phoneDisplay} · or use the Contact page form. Replies usually within 24 hours on weekdays.`,
     keywords: ["contact", "email", "phone", "whatsapp", "message", "reach", "call", "hello", "talk", "speak"],
   },
 ];
@@ -299,7 +301,7 @@ export function findChatResponse(input: string): ChatResponse {
       answer: best.answer,
       suggestions: followUpMap[best.id]?.slice(0, 3),
       links: best.id === "portfolio"
-        ? [{ label: "View Work page", href: "/work" }]
+        ? [{ label: "View Projects", href: "/projects" }]
         : best.id === "about"
           ? [{ label: "About Luqman", href: "/about" }]
           : best.id === "contact"

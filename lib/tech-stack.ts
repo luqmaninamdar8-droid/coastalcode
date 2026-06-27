@@ -31,7 +31,7 @@ export const techShowcaseImages = [
     caption: "Modern web development",
   },
   {
-    src: "https://images.unsplash.com/photo-1517694712202-14dd95375aa0?auto=format&fit=crop&w=800&q=80",
+    src: "/assets/images/laptop-code.jpg",
     alt: "Laptop with code editor open",
     caption: "Built for performance",
   },

@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import type { Project } from "@/lib/projects";
 
 export const siteConfig = {
   name: "Coastal Code",
@@ -8,14 +7,16 @@ export const siteConfig = {
   url:
     process.env.NEXT_PUBLIC_SITE_URL ?? "https://coastalcode.vercel.app",
   locale: "en_IN",
-  email: "hello@coastalcode.goa",
-  phone: "+919876543210",
-  whatsapp: "https://wa.me/919876543210",
+  email: "luqmaninamdar8@gmail.com",
+  phone: "+918459581540",
+  phoneDisplay: "+91 84595 81540",
+  whatsappNumber: "918459581540",
+  whatsapp: "https://wa.me/918459581540",
   github: "https://github.com/luqmaninamdar8-droid/coastalcode",
   ogImage: "/assets/images/header.jpg",
   address: {
-    streetAddress: "Panaji",
-    addressLocality: "Panaji",
+    streetAddress: "Kalay",
+    addressLocality: "Kalay",
     addressRegion: "Goa",
     postalCode: "403001",
     addressCountry: "IN",
@@ -25,7 +26,8 @@ export const siteConfig = {
     "website developer Goa",
     "Coastal Code",
     "Luqman Inamdar",
-    "web developer Panaji",
+    "web developer Kalay",
+    "web developer Goa",
     "affordable website Goa",
     "restaurant website Goa",
     "hotel website Goa",
@@ -38,7 +40,7 @@ export const siteConfig = {
 };
 
 export const defaultDescription =
-  "Coastal Code builds fast, mobile-friendly websites for businesses, homestays, restaurants, and personal projects in Goa. Web design and development by Luqman Inamdar — based in Panaji.";
+  "Coastal Code builds fast, mobile-friendly websites for businesses, homestays, restaurants, and personal projects in Goa. Web design and development by Luqman Inamdar — based in Kalay.";
 
 type PageMetadataOptions = {
   title: string;
@@ -132,7 +134,7 @@ export function organizationJsonLd() {
       ...siteConfig.address,
     },
     areaServed: [
-      { "@type": "City", name: "Panaji" },
+      { "@type": "City", name: "Kalay" },
       { "@type": "State", name: "Goa" },
       { "@type": "Country", name: "India" },
     ],
@@ -160,7 +162,7 @@ export function personJsonLd() {
     telephone: siteConfig.phone,
     homeLocation: {
       "@type": "Place",
-      name: "Panaji, Goa, India",
+      name: "Kalay, Goa, India",
     },
     worksFor: { "@id": `${siteConfig.url}/#organization` },
     sameAs: [siteConfig.github],
@@ -200,20 +202,6 @@ export function breadcrumbJsonLd(
       name: item.name,
       item: absoluteUrl(item.path),
     })),
-  };
-}
-
-export function projectJsonLd(project: Project) {
-  return {
-    "@context": "https://schema.org",
-    "@type": "CreativeWork",
-    name: project.title,
-    description: project.description,
-    url: absoluteUrl(`/projects/${project.slug}`),
-    image: project.image,
-    creator: { "@id": `${siteConfig.url}/#person` },
-    about: project.category,
-    keywords: project.tags.join(", "),
   };
 }
 

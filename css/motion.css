@@ -65,7 +65,7 @@ main.page-enter {
 
 /* Section header animated underline */
 .section-header.visible h2::after,
-.page-hero-content.visible .page-hero-title::after {
+.page-hero-title.visible::after {
   content: "";
   display: block;
   width: 60px;
