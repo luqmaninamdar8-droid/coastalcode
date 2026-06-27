@@ -40,8 +40,8 @@ export default function ContactSection() {
       <div className="container mx-auto max-w-6xl px-4">
         <div className="grid gap-12 lg:grid-cols-2">
           <GsapReveal>
-            <p className="text-sm font-bold uppercase tracking-[0.2em] text-sunset">Contact</p>
-            <h2 className="mt-3 text-3xl font-bold tracking-tight text-sand md:text-4xl">
+            <p className="text-sm font-bold uppercase tracking-[0.2em] text-sunset glow-label">Contact</p>
+            <h2 className="text-gradient-glow mt-3 text-3xl font-bold tracking-tight md:text-4xl">
               Let&apos;s build your website
             </h2>
             <p className="mt-4 text-sand/70 leading-relaxed">

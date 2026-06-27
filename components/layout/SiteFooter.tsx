@@ -25,6 +25,9 @@ export default function SiteFooter() {
             <Link href="/projects" className="hover:text-sunset">
               Projects
             </Link>
+            <Link href="/blog" className="hover:text-sunset">
+              Blog
+            </Link>
             <Link href="/contact" className="hover:text-sunset">
               Contact
             </Link>

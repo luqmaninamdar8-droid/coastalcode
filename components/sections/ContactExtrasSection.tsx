@@ -12,8 +12,8 @@ export default function ContactExtrasSection() {
         <div className="container mx-auto max-w-6xl px-4">
           <div className="grid gap-12 lg:grid-cols-2">
             <GsapReveal>
-              <p className="text-sm font-bold uppercase tracking-[0.2em] text-sunset">FAQ</p>
-              <h2 className="mt-3 text-2xl font-bold text-sand md:text-3xl">
+              <p className="text-sm font-bold uppercase tracking-[0.2em] text-sunset glow-label">FAQ</p>
+              <h2 className="text-gradient-glow mt-3 text-2xl font-bold md:text-3xl">
                 Common questions
               </h2>
               <p className="mt-4 text-sand/70">
@@ -32,10 +32,10 @@ export default function ContactExtrasSection() {
 
             <GsapReveal delay={0.1}>
               <Card className="h-fit p-6 md:p-8">
-                <p className="text-sm font-bold uppercase tracking-[0.2em] text-sunset">
+                <p className="text-sm font-bold uppercase tracking-[0.2em] text-sunset glow-label">
                   Availability
                 </p>
-                <h2 className="mt-3 text-2xl font-bold text-sand">Where I work</h2>
+                <h2 className="text-gradient-glow mt-3 text-2xl font-bold">Where I work</h2>
                 <ul className="mt-6 space-y-3">
                   {serviceAreas.map((area) => (
                     <li key={area} className="flex items-center gap-3 text-sm text-sand/75">

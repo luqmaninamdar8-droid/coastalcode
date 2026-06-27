@@ -24,11 +24,6 @@ export interface NetworkBackgroundProps {
   lineOpacity?: number;
 }
 
-function isDarkTheme() {
-  if (typeof document === "undefined") return true;
-  return document.documentElement.dataset.theme !== "light";
-}
-
 function StaticNetworkFallback() {
   return (
     <svg className="absolute inset-0 h-full w-full opacity-60" aria-hidden="true">
@@ -67,22 +62,9 @@ export default function NetworkBackground({
   const mouseRef = useRef({ x: -1000, y: -1000 });
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
   const [animated, setAnimated] = useState(false);
-  const [visible, setVisible] = useState(true);
 
   useEffect(() => {
     setAnimated(!prefersReducedMotion());
-    setVisible(isDarkTheme());
-
-    const observer = new MutationObserver(() => {
-      setVisible(isDarkTheme());
-    });
-
-    observer.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ["data-theme"],
-    });
-
-    return () => observer.disconnect();
   }, []);
 
   const initNodes = useCallback(
@@ -107,7 +89,7 @@ export default function NetworkBackground({
   );
 
   useEffect(() => {
-    if (!animated || !visible) return;
+    if (!animated) return;
 
     const handleResize = () => {
       const canvas = canvasRef.current;
@@ -134,10 +116,10 @@ export default function NetworkBackground({
     handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
-  }, [animated, visible, initNodes]);
+  }, [animated, initNodes]);
 
   useEffect(() => {
-    if (!animated || !visible) return;
+    if (!animated) return;
 
     const handleMouseMove = (e: MouseEvent) => {
       const canvas = canvasRef.current;
@@ -160,10 +142,10 @@ export default function NetworkBackground({
       window.removeEventListener("mousemove", handleMouseMove);
       window.removeEventListener("mouseleave", handleMouseLeave);
     };
-  }, [animated, visible]);
+  }, [animated]);
 
   useEffect(() => {
-    if (!animated || !visible || dimensions.width === 0 || dimensions.height === 0) return;
+    if (!animated || dimensions.width === 0 || dimensions.height === 0) return;
 
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -286,9 +268,7 @@ export default function NetworkBackground({
     return () => {
       cancelAnimationFrame(animationFrameRef.current);
     };
-  }, [animated, visible, dimensions, connectionDistance, mouseRadius, lineOpacity]);
-
-  if (!visible) return null;
+  }, [animated, dimensions, connectionDistance, mouseRadius, lineOpacity]);
 
   return (
     <div

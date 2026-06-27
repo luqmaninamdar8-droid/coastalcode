@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import AnimatedCounter from "@/components/animations/AnimatedCounter";
 import ScrambleText from "@/components/animations/ScrambleText";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -37,22 +38,31 @@ export default function HeroSection() {
 
       <div className="container relative z-10 mx-auto grid max-w-6xl gap-12 px-4 lg:grid-cols-2 lg:items-center">
         <div>
-          <motion.p
+          <motion.div
             custom={0}
             initial="hidden"
             animate="show"
             variants={stagger}
-            className="mb-4 inline-flex items-center gap-2 rounded-full border border-sunset/30 bg-sunset/10 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.2em] text-sunset-light"
+            className="mb-4 flex flex-wrap gap-2"
           >
-            <span className="h-2 w-2 animate-pulse rounded-full bg-sunset" />
-            13-year-old web creator · Goa, India
-          </motion.p>
+            <span className="inline-flex items-center gap-2 rounded-full border border-emerald-400/30 bg-emerald-400/10 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.15em] text-emerald-300">
+              <span className="relative flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
+              </span>
+              Available for new projects · South Goa
+            </span>
+            <span className="inline-flex items-center gap-2 rounded-full border border-sunset/30 bg-sunset/10 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.2em] text-sunset-light">
+              <span className="h-2 w-2 animate-pulse rounded-full bg-sunset" />
+              13-year-old web creator · Goa, India
+            </span>
+          </motion.div>
 
           <ScrambleText
             as="h1"
             text="I'm a 13-year-old web creator from Goa"
             delay={200}
-            className="text-4xl font-bold leading-[1.08] tracking-tight text-sand sm:text-5xl lg:text-6xl"
+            className="text-gradient-glow-hero glow-title-animate text-4xl font-bold leading-[1.08] tracking-tight sm:text-5xl lg:text-6xl"
           />
 
           <motion.p
@@ -114,7 +124,9 @@ export default function HeroSection() {
           </div>
           <div className="absolute -bottom-4 -left-4 glass-panel rounded-2xl px-5 py-4 shadow-xl">
             <p className="text-xs font-bold uppercase tracking-wider text-sunset">Live sites</p>
-            <p className="text-2xl font-bold text-sand">6+</p>
+            <p className="text-2xl font-bold text-sand">
+              <AnimatedCounter value={6} suffix="+" />
+            </p>
           </div>
         </motion.div>
       </div>

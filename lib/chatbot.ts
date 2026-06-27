@@ -146,7 +146,7 @@ export const chatFaqs: ChatFaq[] = [
     id: "about",
     question: "Who is Luqman?",
     answer:
-      "Luqman Inamdar is a 13-year-old web creator from Goa. He runs Coastal Code and builds custom websites for local businesses — all hand-coded with modern tools.",
+      "Luqman Inamdar is a 13-year-old student from Kalay, Goa — studying at G.H.S. Kalay and building websites under Coastal Code with HTML, CSS, JavaScript, and Next.js.",
     keywords: ["luqman", "inamdar", "coastal code", "about", "creator", "developer", "founder", "owner", "boy", "student"],
   },
   {

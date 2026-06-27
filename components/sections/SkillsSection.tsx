@@ -49,7 +49,7 @@ function SkillBar({ name, level }: { name: string; level: number }) {
       <div className="h-2 overflow-hidden rounded-full bg-white/10">
         <span
           ref={barRef}
-          className="block h-full rounded-full bg-gradient-to-r from-sunset to-sky-400"
+          className="skill-bar-glow block h-full rounded-full bg-gradient-to-r from-sunset via-tech-cyan to-tech-purple"
           style={{ width: 0 }}
         />
       </div>
@@ -62,8 +62,8 @@ export default function SkillsSection() {
     <section id="skills" className="relative py-24 md:py-32">
       <div className="container mx-auto max-w-6xl px-4">
         <GsapReveal className="mx-auto max-w-2xl text-center">
-          <p className="text-sm font-bold uppercase tracking-[0.2em] text-sunset">Skills</p>
-          <h2 className="mt-3 text-3xl font-bold tracking-tight text-sand md:text-4xl">
+          <p className="text-sm font-bold uppercase tracking-[0.2em] text-sunset glow-label">Skills</p>
+          <h2 className="text-gradient-glow mt-3 text-3xl font-bold tracking-tight md:text-4xl">
             HTML, CSS, JavaScript &amp; more
           </h2>
           <p className="mt-4 text-sand/70">

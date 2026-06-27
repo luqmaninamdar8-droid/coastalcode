@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import NavLink from "@/components/animations/NavLink";
-import ThemeToggle from "@/components/ThemeToggle";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { siteConfig } from "@/lib/seo";
@@ -12,6 +11,7 @@ const navItems = [
   { href: "/about", label: "About" },
   { href: "/skills", label: "Skills" },
   { href: "/projects", label: "Projects" },
+  { href: "/blog", label: "Blog" },
   { href: "/contact", label: "Contact" },
 ];
 
@@ -50,7 +50,6 @@ export default function SiteHeader() {
         </nav>
 
         <div className="hidden items-center gap-3 md:flex">
-          <ThemeToggle />
           <Link href="/contact" className={cn(buttonVariants({ size: "sm" }))}>
             Hire Me
           </Link>

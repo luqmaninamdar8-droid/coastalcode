@@ -15,7 +15,7 @@ export const aboutTimeline: TimelineEvent[] = [
     year: "2023",
     title: "Learning the basics",
     description:
-      "Started freeCodeCamp and YouTube tutorials. Built my first messy Hello World page.",
+      "Started freeCodeCamp and YouTube tutorials while studying at G.H.S. Kalay. Built my first messy Hello World page.",
   },
   {
     year: "2024",

@@ -5,32 +5,12 @@ import { motion } from "framer-motion";
 import CodeEditorPanel from "./CodeEditorPanel";
 import { CODE_FILES, prefersReducedMotion } from "@/lib/coding-screen";
 
-function isDarkTheme() {
-  if (typeof document === "undefined") return true;
-  return document.documentElement.dataset.theme !== "light";
-}
-
 export default function CodingScreenBackground() {
-  const [visible, setVisible] = useState(true);
   const [animated, setAnimated] = useState(true);
 
   useEffect(() => {
     setAnimated(!prefersReducedMotion());
-    setVisible(isDarkTheme());
-
-    const observer = new MutationObserver(() => {
-      setVisible(isDarkTheme());
-    });
-
-    observer.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ["data-theme"],
-    });
-
-    return () => observer.disconnect();
   }, []);
-
-  if (!visible) return null;
 
   const mode = animated ? "typing" : "static";
   const scrollMode = animated ? "scroll" : "static";

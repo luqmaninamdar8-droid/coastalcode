@@ -18,7 +18,7 @@ export const siteConfig = {
     streetAddress: "Kalay",
     addressLocality: "Kalay",
     addressRegion: "Goa",
-    postalCode: "403001",
+    postalCode: "403704",
     addressCountry: "IN",
   },
   keywords: [
@@ -162,7 +162,17 @@ export function personJsonLd() {
     telephone: siteConfig.phone,
     homeLocation: {
       "@type": "Place",
-      name: "Kalay, Goa, India",
+      name: "Kalay, Sanguem, Goa, India",
+    },
+    alumniOf: {
+      "@type": "EducationalOrganization",
+      name: "G.H.S. Kalay",
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Kalay",
+        addressRegion: "Goa",
+        addressCountry: "IN",
+      },
     },
     worksFor: { "@id": `${siteConfig.url}/#organization` },
     sameAs: [siteConfig.github],
@@ -257,4 +267,85 @@ export function contactPageJsonLd() {
       "Contact Luqman Inamdar to start a website project in Goa via email, phone, or WhatsApp.",
     mainEntity: { "@id": `${siteConfig.url}/#organization` },
   };
+}
+
+export function faqPageJsonLd(
+  items: Array<{ question: string; answer: string }>,
+) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: items.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer,
+      },
+    })),
+  };
+}
+
+export function creativeWorkJsonLd(project: {
+  title: string;
+  description: string;
+  url: string;
+  image: string;
+  datePublished?: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    name: project.title,
+    description: project.description,
+    url: absoluteUrl(project.url),
+    image: absoluteUrl(project.image),
+    author: { "@id": `${siteConfig.url}/#person` },
+    creator: { "@id": `${siteConfig.url}/#person` },
+    datePublished: project.datePublished ?? "2024-01-01",
+  };
+}
+
+export function blogPostJsonLd(post: {
+  title: string;
+  description: string;
+  slug: string;
+  date: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.description,
+    url: absoluteUrl(`/blog/${post.slug}`),
+    datePublished: post.date,
+    author: { "@id": `${siteConfig.url}/#person` },
+    publisher: { "@id": `${siteConfig.url}/#organization` },
+    inLanguage: "en-IN",
+  };
+}
+
+export function reviewJsonLd(
+  items: Array<{
+    author: string;
+    reviewBody: string;
+    rating: number;
+    itemReviewed: string;
+  }>,
+) {
+  return items.map((item) => ({
+    "@context": "https://schema.org",
+    "@type": "Review",
+    author: { "@type": "Organization", name: item.author },
+    reviewBody: item.reviewBody,
+    reviewRating: {
+      "@type": "Rating",
+      ratingValue: item.rating,
+      bestRating: 5,
+    },
+    itemReviewed: {
+      "@type": "ProfessionalService",
+      name: item.itemReviewed,
+    },
+  }));
 }

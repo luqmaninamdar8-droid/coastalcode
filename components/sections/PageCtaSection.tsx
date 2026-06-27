@@ -27,7 +27,7 @@ export default function PageCtaSection({
       <div className="container mx-auto max-w-6xl px-4">
         <GsapReveal>
           <div className="glass-panel mx-auto max-w-3xl rounded-3xl border border-tech-cyan/20 p-8 text-center md:p-12">
-            <h2 className="text-2xl font-bold text-sand md:text-3xl">{title}</h2>
+            <h2 className="text-gradient-glow text-2xl font-bold md:text-3xl">{title}</h2>
             <p className="mx-auto mt-4 max-w-xl text-sand/70">{description}</p>
             <div className="mt-8 flex flex-wrap justify-center gap-4">
               <Link href={primaryHref} className={cn(buttonVariants({ size: "lg" }))}>

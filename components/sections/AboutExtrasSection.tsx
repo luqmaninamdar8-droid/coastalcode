@@ -10,8 +10,8 @@ export default function AboutExtrasSection() {
       <section className="relative border-t border-white/10 py-24 md:py-28">
         <div className="container mx-auto max-w-6xl px-4">
           <GsapReveal className="mx-auto max-w-2xl text-center">
-            <p className="text-sm font-bold uppercase tracking-[0.2em] text-sunset">What drives me</p>
-            <h2 className="mt-3 text-3xl font-bold tracking-tight text-sand md:text-4xl">
+            <p className="text-sm font-bold uppercase tracking-[0.2em] text-sunset glow-label">What drives me</p>
+            <h2 className="text-gradient-glow mt-3 text-3xl font-bold tracking-tight md:text-4xl">
               How I approach web creation
             </h2>
           </GsapReveal>
@@ -33,7 +33,7 @@ export default function AboutExtrasSection() {
         <div className="container mx-auto max-w-6xl px-4">
           <GsapReveal>
             <Card className="mx-auto max-w-3xl p-8 md:p-10">
-              <h2 className="text-xl font-bold text-sand md:text-2xl">Quick facts</h2>
+              <h2 className="text-gradient-glow text-xl font-bold md:text-2xl">Quick facts</h2>
               <ul className="mt-6 space-y-3">
                 {aboutFacts.map((fact) => (
                   <li key={fact} className="flex items-start gap-3 text-sm text-sand/75">

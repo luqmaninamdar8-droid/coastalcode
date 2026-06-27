@@ -9,6 +9,7 @@ import SiteFooter from "@/components/layout/SiteFooter";
 import SiteHeader from "@/components/layout/SiteHeader";
 import JsonLd from "@/components/JsonLd";
 import ThemeScript from "@/components/ThemeScript";
+import FaqChatbot from "@/components/FaqChatbot";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import {
   defaultDescription,
@@ -98,6 +99,7 @@ export default function RootLayout({
         <PageTransition>{children}</PageTransition>
         <SiteFooter />
         <WhatsAppButton />
+        <FaqChatbot />
         </div>
       </body>
     </html>

@@ -15,8 +15,8 @@ export default function FeaturedProjectsSection() {
       <div className="container mx-auto max-w-6xl px-4">
         <GsapReveal className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
           <div className="max-w-2xl">
-            <p className="text-sm font-bold uppercase tracking-[0.2em] text-sunset">Featured work</p>
-            <h2 className="mt-3 text-3xl font-bold tracking-tight text-sand md:text-4xl">
+            <p className="text-sm font-bold uppercase tracking-[0.2em] text-sunset glow-label">Featured work</p>
+            <h2 className="text-gradient-glow mt-3 text-3xl font-bold tracking-tight md:text-4xl">
               Recent client websites
             </h2>
             <p className="mt-4 text-sand/70">
@@ -32,9 +32,7 @@ export default function FeaturedProjectsSection() {
           {featured.map((project, i) => (
             <GsapReveal key={project.id} delay={i * 0.08}>
               <Link
-                href={project.url}
-                target="_blank"
-                rel="noopener noreferrer"
+                href={`/projects/${project.id}`}
                 className="group block overflow-hidden rounded-2xl border border-white/10 bg-white/5 transition-all hover:border-sunset/30 hover:shadow-glow-sunset"
               >
                 <div className="relative h-44 overflow-hidden">
@@ -53,6 +51,9 @@ export default function FeaturedProjectsSection() {
                 <div className="p-5">
                   <h3 className="font-bold text-sand">{project.title}</h3>
                   <p className="mt-2 line-clamp-2 text-sm text-sand/60">{project.description}</p>
+                  <p className="mt-3 text-sm font-semibold text-sunset group-hover:underline">
+                    View case study →
+                  </p>
                 </div>
               </Link>
             </GsapReveal>

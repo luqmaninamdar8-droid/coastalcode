@@ -1,6 +1,7 @@
 "use client";
 
 import GsapReveal from "@/components/animations/GsapReveal";
+import AnimatedCounter from "@/components/animations/AnimatedCounter";
 import { Card } from "@/components/ui/card";
 import { projectProcess, projectStats } from "@/lib/page-content";
 
@@ -12,7 +13,16 @@ export default function ProjectsExtrasSection() {
           <div className="grid grid-cols-2 gap-6 md:grid-cols-4">
             {projectStats.map((stat, i) => (
               <GsapReveal key={stat.label} delay={i * 0.06} className="text-center">
-                <p className="text-2xl font-bold text-tech-purple md:text-3xl">{stat.value}</p>
+                <p className="text-2xl font-bold text-tech-purple glow-stat-purple md:text-3xl">
+                  {"numeric" in stat && stat.numeric !== undefined ? (
+                    <AnimatedCounter
+                      value={stat.numeric}
+                      suffix={"suffix" in stat ? stat.suffix : ""}
+                    />
+                  ) : (
+                    stat.value
+                  )}
+                </p>
                 <p className="mt-1 text-sm text-sand/60">{stat.label}</p>
               </GsapReveal>
             ))}
@@ -23,8 +33,8 @@ export default function ProjectsExtrasSection() {
       <section className="relative py-24 md:py-28">
         <div className="container mx-auto max-w-6xl px-4">
           <GsapReveal className="mx-auto max-w-2xl text-center">
-            <p className="text-sm font-bold uppercase tracking-[0.2em] text-sunset">Process</p>
-            <h2 className="mt-3 text-3xl font-bold tracking-tight text-sand md:text-4xl">
+            <p className="text-sm font-bold uppercase tracking-[0.2em] text-sunset glow-label">Process</p>
+            <h2 className="text-gradient-glow mt-3 text-3xl font-bold tracking-tight md:text-4xl">
               How we work together
             </h2>
             <p className="mt-4 text-sand/70">

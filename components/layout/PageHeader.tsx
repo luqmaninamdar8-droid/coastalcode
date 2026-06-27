@@ -13,8 +13,8 @@ export default function PageHeader({ label, title, description }: PageHeaderProp
     <section className="relative border-b border-white/10 py-16 md:py-20">
       <div className="container mx-auto max-w-6xl px-4">
         <GsapReveal className="mx-auto max-w-3xl text-center">
-          <p className="text-sm font-bold uppercase tracking-[0.2em] text-tech-cyan">{label}</p>
-          <h1 className="mt-3 text-3xl font-bold tracking-tight text-sand md:text-5xl">{title}</h1>
+          <p className="text-sm font-bold uppercase tracking-[0.2em] text-tech-cyan glow-label">{label}</p>
+          <h1 className="text-gradient-glow-hero glow-title-animate mt-3 text-3xl font-bold tracking-tight md:text-5xl">{title}</h1>
           <p className="mt-4 text-lg leading-relaxed text-sand/70">{description}</p>
         </GsapReveal>
       </div>

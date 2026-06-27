@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import AboutSection from "@/components/sections/AboutSection";
 import AboutExtrasSection from "@/components/sections/AboutExtrasSection";
+import BioProfileSection from "@/components/sections/BioProfileSection";
 import PageCtaSection from "@/components/sections/PageCtaSection";
 import JsonLd from "@/components/JsonLd";
 import PageHeader from "@/components/layout/PageHeader";
@@ -33,9 +34,10 @@ export default function AboutPage() {
       <PageHeader
         label="About"
         title="Luqman Inamdar — web creator from Goa"
-        description="I'm 13, self-taught, and passionate about helping businesses go online with fast, beautiful websites built in Kalay."
+        description="I'm 13, a student at G.H.S. Kalay in Kalay, and passionate about helping businesses go online with fast, beautiful websites."
       />
       <AboutSection />
+      <BioProfileSection />
       <AboutExtrasSection />
       <PageCtaSection
         title="Want to work together?"

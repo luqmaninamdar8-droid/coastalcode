@@ -5,7 +5,14 @@ import PageCtaSection from "@/components/sections/PageCtaSection";
 import JsonLd from "@/components/JsonLd";
 import PageHeader from "@/components/layout/PageHeader";
 import PageShell from "@/components/layout/PageShell";
-import { breadcrumbJsonLd, createPageMetadata, siteConfig } from "@/lib/seo";
+import { contactFaq } from "@/lib/page-content";
+import {
+  breadcrumbJsonLd,
+  contactPageJsonLd,
+  createPageMetadata,
+  faqPageJsonLd,
+  siteConfig,
+} from "@/lib/seo";
 
 export const metadata: Metadata = createPageMetadata({
   title: "Contact | Hire a Web Creator in Goa",
@@ -25,10 +32,19 @@ export default function ContactPage() {
   return (
     <PageShell>
       <JsonLd
-        data={breadcrumbJsonLd([
-          { name: "Home", path: "/" },
-          { name: "Contact", path: "/contact" },
-        ])}
+        data={[
+          breadcrumbJsonLd([
+            { name: "Home", path: "/" },
+            { name: "Contact", path: "/contact" },
+          ]),
+          contactPageJsonLd(),
+          faqPageJsonLd(
+            contactFaq.map((item) => ({
+              question: item.question,
+              answer: item.answer,
+            })),
+          ),
+        ]}
       />
       <PageHeader
         label="Contact"

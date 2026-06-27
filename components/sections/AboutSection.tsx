@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import GsapReveal from "@/components/animations/GsapReveal";
+import { personalBio } from "@/lib/bio";
 import { aboutTimeline } from "@/lib/timeline";
 
 export default function AboutSection() {
@@ -9,17 +10,18 @@ export default function AboutSection() {
     <section id="about" className="relative py-24 md:py-32">
       <div className="container mx-auto max-w-6xl px-4">
         <GsapReveal className="mx-auto max-w-2xl text-center">
-          <p className="text-sm font-bold uppercase tracking-[0.2em] text-sunset">
+          <p className="text-sm font-bold uppercase tracking-[0.2em] text-sunset glow-label">
             About Me
           </p>
-          <h2 className="mt-3 text-3xl font-bold tracking-tight text-sand md:text-4xl">
+          <h2 className="text-gradient-glow mt-3 text-3xl font-bold tracking-tight md:text-4xl">
             A young developer with{" "}
             <span className="text-gradient-sunset">Goa in my heart</span>
           </h2>
           <p className="mt-4 text-sand/70 leading-relaxed">
-            I&apos;m {`Luqman Inamdar`}, a 13-year-old web creator from Kalay, Goa.
-            I teach myself through tutorials, practice, and real client projects —
-            building this Goa portfolio with Next.js, TypeScript, and modern web tools.
+            I&apos;m {personalBio.name}, a {personalBio.age}-year-old web creator from {personalBio.location}.
+            I study at <span className="font-semibold text-sand">{personalBio.school}</span> and teach
+            myself coding through tutorials, practice, and real client projects — building this portfolio
+            with Next.js, TypeScript, and modern web tools.
           </p>
         </GsapReveal>
 

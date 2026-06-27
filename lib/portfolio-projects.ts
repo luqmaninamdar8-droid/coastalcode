@@ -88,3 +88,11 @@ export const portfolioProjects: PortfolioProject[] = clients.map((client) => ({
   imageAlt: projectAlt(client.slug, client.name),
   tags: projectTags(client.slug),
 }));
+
+export function getProjectBySlug(slug: string): PortfolioProject | undefined {
+  return portfolioProjects.find((project) => project.id === slug);
+}
+
+export function getProjectSlugs(): string[] {
+  return portfolioProjects.map((project) => project.id);
+}

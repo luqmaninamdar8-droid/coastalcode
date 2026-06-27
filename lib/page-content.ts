@@ -1,8 +1,10 @@
+import { personalBio } from "@/lib/bio";
+
 export const homeStats = [
-  { value: "6+", label: "Live client sites" },
-  { value: "13", label: "Years old" },
-  { value: "2022", label: "Started coding" },
-  { value: "Kalay", label: "Based in Goa" },
+  { value: "6+", label: "Live client sites", numeric: 6, suffix: "+" },
+  { value: "13", label: "Years old", numeric: 13 },
+  { value: "2022", label: "Started coding", numeric: 2022 },
+  { value: "G.H.S. Kalay", label: "My school" },
 ] as const;
 
 export const quickLinks = [
@@ -56,8 +58,10 @@ export const aboutValues = [
 ] as const;
 
 export const aboutFacts = [
-  "Age 13 · web creator from Kalay, Goa",
+  `Age ${personalBio.age} · student at ${personalBio.school}, ${personalBio.schoolArea}`,
+  `Based in ${personalBio.location}`,
   "Stack: HTML, CSS, JavaScript, TypeScript, React, Next.js",
+  `Speaks ${personalBio.languages.join(", ")}`,
   "Available for new websites, redesigns, and landing pages",
   "Typical reply time: within 24 hours",
 ] as const;
@@ -81,9 +85,9 @@ export const dailyTools = [
 ] as const;
 
 export const projectStats = [
-  { value: "6", label: "Live websites shipped" },
-  { value: "4", label: "Industry categories" },
-  { value: "100%", label: "Real client work" },
+  { value: "6", label: "Live websites shipped", numeric: 6 },
+  { value: "4", label: "Industry categories", numeric: 4 },
+  { value: "100%", label: "Real client work", numeric: 100, suffix: "%" },
   { value: "Next.js", label: "Primary framework" },
 ] as const;
 
