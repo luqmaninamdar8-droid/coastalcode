@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { availabilityDays, availabilityHours } from "@/lib/availability";
 
 export const siteConfig = {
   name: "Coastal Code",
@@ -8,10 +9,10 @@ export const siteConfig = {
     process.env.NEXT_PUBLIC_SITE_URL ?? "https://coastalcode.vercel.app",
   locale: "en_IN",
   email: "luqmaninamdar8@gmail.com",
-  phone: "+918459581540",
-  phoneDisplay: "+91 84595 81540",
-  whatsappNumber: "918459581540",
-  whatsapp: "https://wa.me/918459581540",
+  phone: "+919021541740",
+  phoneDisplay: "+91 90215 41740",
+  whatsappNumber: "919021541740",
+  whatsapp: "https://wa.me/919021541740",
   github: "https://github.com/luqmaninamdar8-droid/coastalcode",
   ogImage: "/assets/images/header.jpg",
   address: {
@@ -146,6 +147,14 @@ export function organizationJsonLd() {
       "Responsive Design",
       "SEO",
       "E-commerce Websites",
+    ],
+    openingHoursSpecification: [
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: availabilityDays.map((d) => d.schemaDay),
+        opens: availabilityHours.start24,
+        closes: availabilityHours.end24,
+      },
     ],
   };
 }

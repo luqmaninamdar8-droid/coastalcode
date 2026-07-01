@@ -1,0 +1,216 @@
+/* ── Floating stickers — dark theme + pop on cursor proximity ── */
+
+.floating-stickers {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.floating-sticker {
+  position: absolute;
+  transform: translateY(var(--parallax-y, 0px));
+  will-change: transform;
+  pointer-events: none;
+}
+
+.floating-sticker-float {
+  animation: sticker-float var(--duration, 18s) ease-in-out infinite;
+  animation-delay: var(--delay, 0s);
+  transform-origin: center center;
+}
+
+.floating-sticker-float.is-paused {
+  animation-play-state: paused;
+}
+
+.floating-sticker-inner {
+  position: relative;
+  padding: 8px;
+  background: rgba(15, 23, 42, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  box-shadow:
+    0 6px 0 rgba(0, 0, 0, 0.25),
+    0 16px 36px rgba(0, 0, 0, 0.35),
+    0 0 0 1px rgba(255, 255, 255, 0.06);
+  transform-origin: center center;
+}
+
+.floating-sticker-inner--glow {
+  box-shadow:
+    0 6px 0 rgba(0, 0, 0, 0.25),
+    0 16px 36px rgba(0, 0, 0, 0.35),
+    0 0 24px color-mix(in srgb, var(--accent, #00d4ff) 40%, transparent),
+    0 0 48px color-mix(in srgb, var(--accent, #00d4ff) 18%, transparent);
+}
+
+.floating-sticker-float:has(.floating-sticker-inner--glow) {
+  animation:
+    sticker-float var(--duration, 18s) ease-in-out infinite,
+    sticker-glow 3.5s ease-in-out infinite;
+  animation-delay: var(--delay, 0s), calc(var(--delay, 0s) * 0.5);
+}
+
+.floating-sticker-inner--shine {
+  overflow: hidden;
+}
+
+.floating-sticker-inner--shine::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -120%;
+  width: 60%;
+  height: 200%;
+  background: linear-gradient(
+    105deg,
+    transparent 35%,
+    rgba(255, 255, 255, 0.35) 50%,
+    transparent 65%
+  );
+  animation: sticker-shine 5s ease-in-out infinite;
+  animation-delay: var(--delay, 0s);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.floating-sticker-inner--badge {
+  border-radius: 50%;
+  padding: 10px;
+  background: linear-gradient(
+    145deg,
+    rgba(30, 41, 59, 0.9),
+    color-mix(in srgb, var(--accent, #00d4ff) 22%, rgba(15, 23, 42, 0.95))
+  );
+}
+
+.floating-sticker-inner.is-popped {
+  box-shadow:
+    0 10px 0 rgba(0, 0, 0, 0.2),
+    0 24px 48px rgba(0, 0, 0, 0.45),
+    0 0 32px color-mix(in srgb, var(--accent, #00d4ff) 65%, transparent),
+    0 0 64px color-mix(in srgb, var(--accent, #f59e0b) 35%, transparent);
+}
+
+.floating-sticker-pop-ring {
+  position: absolute;
+  inset: -6px;
+  border-radius: inherit;
+  border: 2px solid color-mix(in srgb, var(--accent, #00d4ff) 70%, transparent);
+  opacity: 0;
+  transform: scale(0.85);
+  pointer-events: none;
+}
+
+.floating-sticker-inner.is-popped .floating-sticker-pop-ring {
+  animation: sticker-pop-ring 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.floating-sticker-img {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.35));
+}
+
+@keyframes sticker-float {
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(var(--rotate, 0deg));
+  }
+  20% {
+    transform: translate(14px, -18px) rotate(calc(var(--rotate, 0deg) + 8deg));
+  }
+  45% {
+    transform: translate(-10px, -32px) rotate(calc(var(--rotate, 0deg) - 5deg));
+  }
+  70% {
+    transform: translate(16px, -14px) rotate(calc(var(--rotate, 0deg) + 4deg));
+  }
+}
+
+@keyframes sticker-glow {
+  0%,
+  100% {
+    filter: brightness(1);
+  }
+  50% {
+    filter: brightness(1.12);
+  }
+}
+
+@keyframes sticker-shine {
+  0%,
+  70%,
+  100% {
+    left: -120%;
+  }
+  85% {
+    left: 140%;
+  }
+}
+
+@keyframes sticker-pop-ring {
+  0% {
+    opacity: 0.85;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.55);
+  }
+}
+
+@media (max-width: 1100px) {
+  .floating-sticker:nth-child(n + 13) {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .floating-sticker:nth-child(n + 9) {
+    display: none;
+  }
+
+  .floating-sticker-inner {
+    padding: 5px;
+    border-radius: 16px;
+  }
+
+  .floating-sticker-img {
+    width: 44px !important;
+    height: 44px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .floating-sticker:nth-child(n + 6) {
+    display: none;
+  }
+
+  .floating-sticker-inner {
+    padding: 4px;
+    border-radius: 14px;
+  }
+
+  .floating-sticker-img {
+    width: 38px !important;
+    height: 38px !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .floating-sticker-float,
+  .floating-sticker-inner--shine::before,
+  .floating-sticker-pop-ring {
+    animation: none !important;
+  }
+
+  .floating-sticker {
+    transform: none;
+  }
+}

@@ -46,7 +46,7 @@ export default function ContactSection() {
             </h2>
             <p className="mt-4 text-sand/70 leading-relaxed">
               Ready to hire a young developer in Goa? Send a message — I typically reply
-              within 24 hours. HTML, CSS, JavaScript, and Next.js projects welcome.
+              within 24 hours. Available every day, 3:00 PM – 9:00 PM IST.
             </p>
 
             <ul className="mt-8 space-y-4 text-sm text-sand/70">

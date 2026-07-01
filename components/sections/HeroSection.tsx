@@ -1,10 +1,11 @@
 "use client";
 
-import Image from "next/image";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import AnimatedCounter from "@/components/animations/AnimatedCounter";
 import ScrambleText from "@/components/animations/ScrambleText";
+import TechGlobe from "@/components/animations/TechGlobe";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { siteConfig } from "@/lib/seo";
@@ -19,23 +20,22 @@ const stagger = {
 };
 
 export default function HeroSection() {
+  const [globeSize, setGlobeSize] = useState(300);
+
+  useEffect(() => {
+    const update = () => {
+      setGlobeSize(window.innerWidth >= 1024 ? 440 : window.innerWidth >= 640 ? 380 : 300);
+    };
+    update();
+    window.addEventListener("resize", update, { passive: true });
+    return () => window.removeEventListener("resize", update);
+  }, []);
+
   return (
     <section
       id="hero"
       className="relative flex min-h-screen items-center overflow-hidden pt-20"
     >
-      <div className="absolute inset-0 opacity-[0.06]">
-        <Image
-          src="/images/goa-beach-sunset.jpg"
-          alt="Goa beach sunset — inspiration for Coastal Code web design"
-          fill
-          priority
-          className="object-cover"
-          sizes="100vw"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#0A0F1A]/30" />
-      </div>
-
       <div className="container relative z-10 mx-auto grid max-w-6xl gap-12 px-4 lg:grid-cols-2 lg:items-center">
         <div>
           <motion.div
@@ -110,19 +110,10 @@ export default function HeroSection() {
           initial={{ opacity: 0, scale: 0.94, x: 40 }}
           animate={{ opacity: 1, scale: 1, x: 0 }}
           transition={{ delay: 0.5, duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-          className="relative hidden lg:block"
+          className="relative flex min-h-[280px] items-center justify-center sm:min-h-[360px] lg:min-h-[440px]"
         >
-          <div className="glass-panel overflow-hidden rounded-3xl p-2 shadow-2xl">
-            <Image
-              src="/images/goa-street-culture.jpg"
-              alt="Colourful streets in Goa — Coastal Code portfolio inspiration"
-              width={600}
-              height={450}
-              className="rounded-2xl object-cover"
-              priority
-            />
-          </div>
-          <div className="absolute -bottom-4 -left-4 glass-panel rounded-2xl px-5 py-4 shadow-xl">
+          <TechGlobe size={globeSize} className="mx-auto" />
+          <div className="absolute bottom-0 left-0 glass-panel rounded-2xl px-5 py-4 shadow-xl sm:-bottom-2 sm:-left-2">
             <p className="text-xs font-bold uppercase tracking-wider text-sunset">Live sites</p>
             <p className="text-2xl font-bold text-sand">
               <AnimatedCounter value={6} suffix="+" />

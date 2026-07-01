@@ -10,6 +10,7 @@ import SiteHeader from "@/components/layout/SiteHeader";
 import JsonLd from "@/components/JsonLd";
 import ThemeScript from "@/components/ThemeScript";
 import FaqChatbot from "@/components/FaqChatbot";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import {
   defaultDescription,
@@ -88,6 +89,9 @@ export default function RootLayout({
       data-scroll-behavior="smooth"
       suppressHydrationWarning
     >
+      <head>
+        <GoogleAnalytics />
+      </head>
       <body className="relative min-h-screen font-sans">
         <ThemeScript />
         <TechBackground />

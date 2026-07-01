@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 import ContactSection from "@/components/sections/ContactSection";
+import AvailabilityCalendar from "@/components/sections/AvailabilityCalendar";
 import ContactExtrasSection from "@/components/sections/ContactExtrasSection";
 import PageCtaSection from "@/components/sections/PageCtaSection";
 import JsonLd from "@/components/JsonLd";
 import PageHeader from "@/components/layout/PageHeader";
 import PageShell from "@/components/layout/PageShell";
 import { contactFaq } from "@/lib/page-content";
+import { openingHoursJsonLd } from "@/lib/availability";
 import {
   breadcrumbJsonLd,
   contactPageJsonLd,
@@ -38,6 +40,7 @@ export default function ContactPage() {
             { name: "Contact", path: "/contact" },
           ]),
           contactPageJsonLd(),
+          openingHoursJsonLd(),
           faqPageJsonLd(
             contactFaq.map((item) => ({
               question: item.question,
@@ -52,6 +55,7 @@ export default function ContactPage() {
         description="Send a message, email, or WhatsApp — I typically reply within 24 hours. Based in Kalay, available for clients across Goa and India."
       />
       <ContactSection />
+      <AvailabilityCalendar />
       <ContactExtrasSection />
       <PageCtaSection
         title="Prefer WhatsApp?"
